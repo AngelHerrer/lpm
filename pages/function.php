@@ -102,7 +102,7 @@ function updateEmple($idEmp,$nomEmple,$apPatEmple,$apMatEmple,$rfcEmple,$dateNac
             . "`emp_date_admission`='$dateAdmEmple',`emp_locked`='$lockedEmple',`emp_bank_account`='$bankEmple' WHERE `id_emp`=$idEmp";
     
     
-    $result = mysqli_query($liga, $query) or die (header('Location: http://localhost/tempPrisma/pages/index.php?edit=no'));
+    $result = mysqli_query($liga, $query) or die ( "<script>window.location.href='index.php?edit=no';</script>");
     
     
 }
