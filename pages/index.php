@@ -19,6 +19,7 @@ $valores = new Valores();
 
         <!-- Bootstrap Core CSS -->
         <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 
         <!-- MetisMenu CSS -->
         <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
@@ -217,13 +218,13 @@ $valores = new Valores();
                                         </thead>
                                         <tbody>
 
-<?php
-$valores->getAllEmp();
-?>
+                                            <?php
+                                            $valores->getAllEmp();
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>          
+                            </div>   
                         </div>
                     </div>
                 </div>

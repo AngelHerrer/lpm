@@ -1,5 +1,4 @@
 <?php
-echo 'hola';
 //    date_default_timezone_set("America/Los Angeles"); //Defines la zona horaria
 
 //function UltimoDia($anho,$mes){
@@ -13,23 +12,20 @@ $mes=02;
        $dias_febrero = 28;
        
    }
-   echo $dias_febrero;
-   
-   switch($mes) {
-       case 01: return 31; break;
-       case 02: return $dias_febrero; break;
-       case 03: return 31; break;
-       case 04: return 30; break;
-       case 05: return 31; break;
-       case 06: return 30; break;
-       case 07: return 31; break;
-       case 08: return 31; break;
-       case 09: return 30; break;
-       case 10: return 31; break;
-       case 11: return 30; break;
-       case 12: return 31; break;
-   }
+//   echo $dias_febrero;
 
+   $numero = cal_days_in_month(CAL_GREGORIAN, $mes, $anho); // 31
+    echo "Hubo {$numero} días en ".$mes." del".$anho ."<br>";
+
+ for($i=1; $i < 16; $i++ ){
+     echo $i;
+     
+ }
+ echo '<br>';
+ 
+  for($i=16-4; $i < $numero+1; $i++ ){
+     echo $i; 
+ }
 
 //if (30 > 29) {
 //    echo '2';
