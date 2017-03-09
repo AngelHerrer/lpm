@@ -2,13 +2,31 @@
 
 class Valores {
 
+    function max_id($liga) {
+        $query = "select count(*) from emp_prisma";
+        $resultado = @mysqli_query($liga, $query) or die(mysql_error());
+        $row = mysqli_fetch_array($resultado);
+        if ($row['count(*)'] == 0) {
+            return 1;
+        }
+        $query = "select max(id_emp) from emp_prisma";
+        $resultado = @mysqli_query($liga, $query) or die(mysql_error());
+
+        $row = mysqli_fetch_array($resultado);
+        $id = $row['max(id_emp)'];
+
+        $id_auto = (int) $id + 1;
+
+        return $id_auto;
+    }
+
     function saveEmployee($nameEmp, $patEmp, $matEmp, $rfcEmp, $dateEmpNac, $placeEmp, $avenEmp, $colonyEmp, $postalEmp, $delegaEmp, $state, $phoneOne, $phoneTwo, $genderEmp, $civilEmp, $schoolEmp, $chilEmp, $referEmp, $socialEmp, $numSocial, $bankEmp, $turnEmp, $servEmp, $dateIng, $lockedEmp) {
         include 'conexion.php';
-        $query = "INSERT INTO `emp_prisma`( `emp_name`, `emp_ap_pat`, `emp_ap_mat`, `emp_rfc`, `emp_date_nac`, `emp_place_birth`, `emp_avenue`, `emp_colony`, `emp_postal_code`, `emp_delegation`, `emp_state`, `emp_phone`, `emp_phone_two`, `emp_gender`, `emp_civil_status`, `emp_ scholarship`, `emp_children`, `emp_ reference`, `emp_social_option`, `emp_social_security`, `emp_turn`, `emp_service`, `emp_date_admission`, `emp_locked`, `emp_bank_account`) VALUES ('$nameEmp','$patEmp','$matEmp','$rfcEmp','$dateEmpNac','$placeEmp','$avenEmp','$colonyEmp','$postalEmp','$delegaEmp','$state','$phoneOne','$phoneTwo','$genderEmp','$civilEmp','$schoolEmp','$chilEmp','$referEmp','$socialEmp','$numSocial','$turnEmp','$servEmp','$dateIng','$lockedEmp','$bankEmp')";
-
+        $id_auto = $this->max_id($liga);
+        $query = "INSERT INTO emp_prisma VALUES ('$id_auto','$nameEmp','$patEmp','$matEmp','$rfcEmp','$dateEmpNac','$placeEmp','$avenEmp','$colonyEmp','$postalEmp','$delegaEmp','$state','$phoneOne','$phoneTwo','$genderEmp','$civilEmp','$schoolEmp','$chilEmp','$referEmp','$socialEmp','$numSocial','$turnEmp','$servEmp','$dateIng','$lockedEmp','$bankEmp')";
+        echo $query;
         $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
     }
-    
 
     function getAllEmp() {
         include 'conexion.php';
@@ -22,6 +40,18 @@ class Valores {
             $serviceEmp = $row['emp_service'];
             $turnEmp = $row['emp_turn'];
             echo '<tr><td>' . $idEmp . '</td><td>' . $nameEmp . '</td><td>' . $apPat . '</td><td>' . $apMat . '</td><td>' . $serviceEmp . '</td><td>' . $turnEmp . '</td><td align="center"><a href="getEmpleado.php?idEmp=' . $idEmp . '"><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open"></span></a></td></tr>';
+        }
+    }
+
+    function getServices() {
+        include 'conexion.php';
+        $query = "SELECT * FROM `servicios`";
+        $result = mysqli_query($liga, $query);
+        while ($row = mysqli_fetch_array($result)) {
+            $id_service = $row['id_service'];
+            $name_servicio = $row['name_servicio'];
+            $act_servicio = $row['act_servicio'];
+            echo '<option value="' . $id_service . '">' . $name_servicio . '</option>';
         }
     }
 
@@ -69,8 +99,9 @@ class Valores {
         $query = "SELECT * FROM `estados`";
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
+            $id_state = $row['id_state'];
             $state = $row['estado'];
-            echo '<option>' . $state . '</option>';
+            echo '<option value="' . $id_state . '">' . $state . '</option>';
         }
     }
 

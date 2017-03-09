@@ -106,7 +106,7 @@ $valores = new Valores();
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i>Registra Empleados<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#panels-wells.html">Ingresa Turnos</a>
+                                        <a href="panels-wells.php">Ingresa Turnos</a>
                                     </li>
                                     <li>
                                         <a href="#buttons.html">Consulta Registros</a>

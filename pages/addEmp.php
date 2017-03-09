@@ -395,7 +395,7 @@ $valores = new Valores();
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
-                <form role="form" action="#executeSaveEmp.php" method="post" class="form-inline">
+                <form role="form" action="executeSaveEmp.php" method="post" class="form-inline">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="panel panel-default">
@@ -487,7 +487,7 @@ $valores = new Valores();
                                             </div>
                                             <label>Código Postal: </label>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="postalEmp" placeholder="Enter code postal" SIZE=10 MAXLENGTH=5 pattern="[0-9]">
+                                                <input type="text" class="form-control" name="postalEmp" placeholder="Enter code postal" SIZE=10 MAXLENGTH=5 >
                                             </div>    
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
@@ -502,7 +502,7 @@ $valores = new Valores();
 
                                                 <select class="form-control" name="state">
                                                     <option>Elije un estado de la republica</option>
-<?php $valores->allState(); ?>
+                                                    <?php $valores->allState(); ?>
                                                 </select>
 
                                             </div> 
@@ -642,7 +642,7 @@ $valores = new Valores();
                                                 </div>
                                             <label style="margin-left: 96px;">Cuenta bancaria: </label>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="bankEmp" placeholder="Enter bank count" maxlength="10" pattern="[0-9]" >
+                                                <input type="text" class="form-control" name="bankEmp" placeholder="Enter bank count" maxlength="10">
                                             </div>
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
@@ -671,7 +671,8 @@ $valores = new Valores();
                                             <label >Servicio: </label>
                                             <div class="form-group">
                                                 <select class="form-control" name="servEmp">
-                                                    <option>Elijir servicio</option>
+                                                    <option value="0">---</option>
+                                                   <?php $valores->getServices(); ?> 
                                                 </select>
                                             </div>
                                             
