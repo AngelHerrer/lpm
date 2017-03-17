@@ -34,6 +34,20 @@ $valores = new Valores();
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <script type="text/javascript">
+			$(document).ready(function(){
+				$("#marca").change(function(){
+					$.ajax({
+						url:"getMuni.php",
+						type: "POST",
+						data:"idmarca="+$("#marca").val(),
+						success: function(opciones){
+							$("#modelo").html(opciones);
+						}
+					})
+				});
+			});
+	</script>
 
     </head>
     <style>
@@ -41,6 +55,7 @@ $valores = new Valores();
             margin-top: 25px;
         }
     </style>
+    
 
     <body>
 
@@ -394,6 +409,7 @@ $valores = new Valores();
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
+                
                 <!-- /.row -->
                 <form role="form" action="executeSaveEmp.php" method="post" class="form-inline">
                     <div class="row">
@@ -493,26 +509,29 @@ $valores = new Valores();
                                         <!-- /.col-lg-6 (nested) -->
                                     </div>
                                     <div class="row separetorTopInput">
-
+                                        
                                         <!-- /.col-lg-6 (nested) -->
                                         <div class="col-lg-12">
                                             <label>Estado: </label>
+                                                
                                             <div class="form-group">
 
-
-                                                <select class="form-control" name="state">
+                                                
+                                                <select class="form-control" name="statea" id="marca">
                                                     <option>Elije un estado de la republica</option>
                                                     <?php $valores->allState(); ?>
                                                 </select>
 
                                             </div> 
-
+                                            
                                             <label style="margin-left: 82px;">Municipio: </label>
                                             <div class="form-group">
-                                                <select class="form-control" name="delegaEmp">
+                                                <select class="form-control" name="delegaEmp" id="modelo">
                                                     <option>Elije un municipio</option>
                                                 </select>
                                             </div>
+                                        <div id="result">
+                                            
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
                                     </div>
@@ -705,11 +724,12 @@ $valores = new Valores();
                     <hr>
                     <input type="submit" class="btn btn-default" value="Guardar">
                     <hr>
-                </form>
+                    
                 <!-- /.row -->
-            </div>
+                    </div>
+                    </form>
             <!-- /#page-wrapper -->
-
+            
         </div>
         <!-- /#wrapper -->
 
@@ -724,6 +744,20 @@ $valores = new Valores();
 
         <!-- Custom Theme JavaScript -->
         <script src="../dist/js/sb-admin-2.js"></script>
+        <script type="text/javascript">
+			$(document).ready(function(){
+				$("#marca").change(function(){
+					$.ajax({
+						url:"getMuni.php",
+						type: "POST",
+						data:"idmarca="+$("#marca").val(),
+						success: function(opciones){
+							$("#modelo").html(opciones);
+						}
+					})
+				});
+			});
+	</script>
 
     </body>
 

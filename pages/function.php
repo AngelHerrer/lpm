@@ -119,6 +119,18 @@ class Valores {
 
         $result = mysqli_query($liga, $query) or die("<script>window.location.href='index.php?edit=no';</script>");
     }
+    
+    function getMuni($idState){
+        include 'conexion.php';
+        $opciones = '<option value="0"> Elige un municipio</option>';
+        $query = 'select nombre_municipio from prisma.municipios where id_estado ='.$idState;
+        $result = mysqli_query($liga, $query);
+        while ($row = mysqli_fetch_array($result)) {
+            $id_state = $row['id_municipio'];
+            $state = $row['nombre_municipio'];
+            echo $opciones = '<option value="' . $id_state . '">' . $state . '</option>';
+        }
+    }
 
 }
 ?>
