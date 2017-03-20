@@ -2,18 +2,19 @@
 
 class Valores {
 
-    function max_id($liga) {
-        $query = "select count(*) from emp_prisma";
+    function max_id($liga, $table, $column) {
+        $query = "select count(*) from " . $table;
         $resultado = @mysqli_query($liga, $query) or die(mysql_error());
         $row = mysqli_fetch_array($resultado);
         if ($row['count(*)'] == 0) {
             return 1;
         }
-        $query = "select max(id_emp) from emp_prisma";
+
+        $query = "select max(" . $column . ") from " . $table;
         $resultado = @mysqli_query($liga, $query) or die(mysql_error());
 
         $row = mysqli_fetch_array($resultado);
-        $id = $row['max(id_emp)'];
+        $id = $row['max(' . $column . ')'];
 
         $id_auto = (int) $id + 1;
 
@@ -22,8 +23,16 @@ class Valores {
 
     function saveEmployee($nameEmp, $patEmp, $matEmp, $rfcEmp, $dateEmpNac, $placeEmp, $avenEmp, $colonyEmp, $postalEmp, $delegaEmp, $state, $phoneOne, $phoneTwo, $genderEmp, $civilEmp, $schoolEmp, $chilEmp, $referEmp, $socialEmp, $numSocial, $bankEmp, $turnEmp, $servEmp, $dateIng, $lockedEmp) {
         include 'conexion.php';
-        $id_auto = $this->max_id($liga);
+        $id_auto = $this->max_id($liga,'emp_prisma' , 'id_emp');
         $query = "INSERT INTO emp_prisma VALUES ('$id_auto','$nameEmp','$patEmp','$matEmp','$rfcEmp','$dateEmpNac','$placeEmp','$avenEmp','$colonyEmp','$postalEmp','$delegaEmp','$state','$phoneOne','$phoneTwo','$genderEmp','$civilEmp','$schoolEmp','$chilEmp','$referEmp','$socialEmp','$numSocial','$turnEmp','$servEmp','$dateIng','$lockedEmp','$bankEmp')";
+        echo $query;
+        $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
+    }
+    
+    function saveService($nameService, $dirService, $actService) {
+        include 'conexion.php';
+        $id_auto = $this->max_id($liga, 'servicios', 'id_service');
+        $query = "insert into servicios  values ($id_auto,'$nameService','$dirService','$actService'); ";
         echo $query;
         $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
     }
