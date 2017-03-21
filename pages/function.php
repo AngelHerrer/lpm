@@ -23,18 +23,36 @@ class Valores {
 
     function saveEmployee($nameEmp, $patEmp, $matEmp, $rfcEmp, $dateEmpNac, $placeEmp, $avenEmp, $colonyEmp, $postalEmp, $delegaEmp, $state, $phoneOne, $phoneTwo, $genderEmp, $civilEmp, $schoolEmp, $chilEmp, $referEmp, $socialEmp, $numSocial, $bankEmp, $turnEmp, $servEmp, $dateIng, $lockedEmp) {
         include 'conexion.php';
-        $id_auto = $this->max_id($liga,'emp_prisma' , 'id_emp');
+        $id_auto = $this->max_id($liga, 'emp_prisma', 'id_emp');
         $query = "INSERT INTO emp_prisma VALUES ('$id_auto','$nameEmp','$patEmp','$matEmp','$rfcEmp','$dateEmpNac','$placeEmp','$avenEmp','$colonyEmp','$postalEmp','$delegaEmp','$state','$phoneOne','$phoneTwo','$genderEmp','$civilEmp','$schoolEmp','$chilEmp','$referEmp','$socialEmp','$numSocial','$turnEmp','$servEmp','$dateIng','$lockedEmp','$bankEmp')";
         echo $query;
         $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
     }
-    
+
     function saveService($nameService, $dirService, $actService) {
         include 'conexion.php';
         $id_auto = $this->max_id($liga, 'servicios', 'id_service');
         $query = "insert into servicios  values ($id_auto,'$nameService','$dirService','$actService'); ";
-        echo $query;
+//        echo $query;
         $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
+        if ($result) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href="addService.php?succes=ok";';
+            echo '</script>';
+        }
+    }
+
+    function getAllService() {
+        include 'conexion.php';
+        $query = "SELECT * FROM `servicios`";
+        $result = mysqli_query($liga, $query);
+        while ($row = mysqli_fetch_array($result)) {
+            $id_service = $row['id_service'];
+            $name_servicio = $row['name_servicio'];
+            $direccion_servicio = $row['direccion_servicio'];
+            $act_servicio = $row['act_servicio'];
+            echo '<tr><td>' . $id_service . '</td><td>' . $name_servicio . '</td><td>' . $direccion_servicio . '</td><td>' . $act_servicio . '</td><td><button type="button" class="btn btn-primary">Guardar</button></td></tr>';
+        }
     }
 
     function getAllEmp() {
@@ -128,11 +146,11 @@ class Valores {
 
         $result = mysqli_query($liga, $query) or die("<script>window.location.href='index.php?edit=no';</script>");
     }
-    
-    function getMuni($idState){
+
+    function getMuni($idState) {
         include 'conexion.php';
         $opciones = '<option value="0"> Elige un municipio</option>';
-        $query = 'select nombre_municipio from prisma.municipios where id_estado ='.$idState;
+        $query = 'select nombre_municipio from prisma.municipios where id_estado =' . $idState;
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
             $id_state = $row['id_municipio'];

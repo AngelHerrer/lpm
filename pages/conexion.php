@@ -2,7 +2,7 @@
 
 $servidor = "localhost";
 $usuario = "root";
-$password = "";
+$password = "root";
 
     if (!$liga = mysqli_connect($servidor,$usuario,$password)) {
         echo "No se encuentra el Servidor";

@@ -3,9 +3,11 @@ error_reporting(E_ALL ^ E_NOTICE);
 include 'function.php';
 $valores = new Valores();
 extract($_REQUEST);
-$valores->saveService($nameService, $dirService, $actService);
-header("Location:addService.php?succes=ok");        
-
-
+if($valores->saveService($nameService, $dirService, $actService)){
+//    header("Location:addService.php?succes=ok");        
+    echo '<script type="text/javascript">';
+        echo 'window.location.href="addService.php?succes=ok";';
+        echo '</script>';
+}
 ?>
 
