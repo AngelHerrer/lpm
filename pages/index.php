@@ -20,7 +20,7 @@ $valores = new Valores();
         <!-- Bootstrap Core CSS -->
         <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-
+        <link href="../dist/css/base.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
         <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
@@ -96,14 +96,14 @@ $valores = new Valores();
                                 </div>
                             </li>
                             <li>
-                                <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Empleados</a>
+                                <a href="index.php"><i class="glyphicon glyphicon-user fa-fw"></i> Empleados</a>
                             </li>
                             <li>
-                                <a href="addEmp.php"><i class="fa fa-bar-chart-o fa-fw"></i> Dar de alta empleado</a>
+                                <a href="addEmp.php"><i class="glyphicon glyphicon-upload fa-fw"></i> Dar de alta empleado</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-wrench fa-fw"></i>Registra Empleados<span class="fa arrow"></span></a>
+                                <a href="#"><i class="glyphicon glyphicon-file fa-fw"></i>Registra Empleados<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="panels-wells.php">Ingresa Turnos</a>
@@ -127,7 +127,7 @@ $valores = new Valores();
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>Servicios<span class="fa arrow"></span></a>
+                                <a href="#"><i class="glyphicon glyphicon-wrench fa-fw"></i>Servicios<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="addService.php">Alta Servicios</a>
@@ -135,7 +135,7 @@ $valores = new Valores();
                                     <li>
                                         <a href="#">Provedores</a>
                                     </li>
-                                    <li>
+<!--                                    <li>
                                         <a href="#">Third Level <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
@@ -151,7 +151,7 @@ $valores = new Valores();
                                                 <a href="#">Third Level Item</a>
                                             </li>
                                         </ul>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </li>
                             <!--                            <li>
@@ -179,7 +179,7 @@ $valores = new Valores();
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-8  ">
-                    <h1 class="page-header ">Lista de empleados</h1>
+                    <h2 class="page-header ">Lista de empleados</h2>
                 </div>
                 <div class="col-lg-4">
                     <?php

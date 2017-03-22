@@ -72,7 +72,7 @@
 
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
-                        <ul class="nav" id="side-menu">
+                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
                                 <div class="input-group custom-search-form">
                                     <input type="text" class="form-control" placeholder="Search...">
@@ -84,14 +84,14 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Empleados</a>
+                                <a href="index.php"><i class="glyphicon glyphicon-user fa-fw"></i> Empleados</a>
                             </li>
                             <li>
-                                <a href="addEmp.php"><i class="fa fa-bar-chart-o fa-fw"></i> Dar de alta empleado</a>
+                                <a href="addEmp.php"><i class="glyphicon glyphicon-upload fa-fw"></i> Dar de alta empleado</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-wrench fa-fw"></i>Registra Empleados<span class="fa arrow"></span></a>
+                                <a href="#"><i class="glyphicon glyphicon-file fa-fw"></i>Registra Empleados<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="panels-wells.php">Ingresa Turnos</a>
@@ -115,7 +115,7 @@
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>Servicios<span class="fa arrow"></span></a>
+                                <a href="#"><i class="glyphicon glyphicon-wrench fa-fw"></i>Servicios<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="addService.php">Alta Servicios</a>
@@ -123,7 +123,7 @@
                                     <li>
                                         <a href="#">Provedores</a>
                                     </li>
-                                    <li>
+<!--                                    <li>
                                         <a href="#">Third Level <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
@@ -139,7 +139,7 @@
                                                 <a href="#">Third Level Item</a>
                                             </li>
                                         </ul>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </li>
                             <!--                            <li>
@@ -168,7 +168,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-lg-12">
-                            <h1 class="page-header ">Turnos</h1>
+                            <h2 class="page-header ">Turnos</h2>
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-1">

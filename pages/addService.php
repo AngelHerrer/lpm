@@ -18,12 +18,19 @@ $valores = new Valores();
 
         <!-- Bootstrap Core CSS -->
         <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
+        <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="../dist/css/base.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
         <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
+        <!-- Timeline CSS -->
+        <link href="../dist/css/timeline.css" rel="stylesheet">
+
         <!-- Custom CSS -->
         <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+        <!-- Morris Charts CSS -->
+        <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
         <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -50,11 +57,7 @@ $valores = new Valores();
         </script>
 
     </head>
-    <style>
-        .separetorTopInput {
-            margin-top: 25px;
-        }
-    </style>
+
 
 
     <body>
@@ -96,7 +99,7 @@ $valores = new Valores();
 
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
-                        <ul class="nav" id="side-menu">
+                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
                                 <div class="input-group custom-search-form">
                                     <input type="text" class="form-control" placeholder="Search...">
@@ -108,14 +111,14 @@ $valores = new Valores();
                                 </div>
                             </li>
                             <li>
-                                <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Empleados</a>
+                                <a href="index.php"><i class="glyphicon glyphicon-user fa-fw"></i> Empleados</a>
                             </li>
                             <li>
-                                <a href="addEmp.php"><i class="fa fa-bar-chart-o fa-fw"></i> Dar de alta empleado</a>
+                                <a href="addEmp.php"><i class="glyphicon glyphicon-upload fa-fw"></i> Dar de alta empleado</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-wrench fa-fw"></i>Registra Empleados<span class="fa arrow"></span></a>
+                                <a href="#"><i class="glyphicon glyphicon-file fa-fw"></i>Registra Empleados<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="panels-wells.php">Ingresa Turnos</a>
@@ -139,7 +142,7 @@ $valores = new Valores();
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>Servicios<span class="fa arrow"></span></a>
+                                <a href="#"><i class="glyphicon glyphicon-wrench fa-fw"></i>Servicios<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="addService.php">Alta Servicios</a>
@@ -147,7 +150,7 @@ $valores = new Valores();
                                     <li>
                                         <a href="#">Provedores</a>
                                     </li>
-                                    <li>
+<!--                                    <li>
                                         <a href="#">Third Level <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
@@ -163,7 +166,7 @@ $valores = new Valores();
                                                 <a href="#">Third Level Item</a>
                                             </li>
                                         </ul>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </li>
                             <!--                            <li>
@@ -202,58 +205,58 @@ $valores = new Valores();
                         <h2 class="page-header">Dar de alta un Servicio</h2>
                     </div>
                 </div>
-                
-                    <form role="form" action="executeSaveService.php" method="post" class="form-inline">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        Datos generales
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="col-lg-5">
-                                                    <label>Nombre de la empresa: </label>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="nameService" placeholder="Nombre de la empresa">
-                                                    </div>
+
+                <form role="form" action="executeSaveService.php" method="post" class="form-inline">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Datos generales
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-5">
+                                                <label>Nombre de la empresa: </label>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="nameService" placeholder="Nombre de la empresa">
                                                 </div>
-                                                <div class="col-lg-3">
-                                                    <label>Activo: </label>
-                                                    <div class="form-group">
-                                                        <select class="form-control" name="actService">
-                                                            <option>Elije una opción</option>
-                                                            <option value="1">Si</option>
-                                                            <option value="0">No</option>
-                                                        </select>
-                                                    </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label>Activo: </label>
+                                                <div class="form-group">
+                                                    <select class="form-control" name="actService">
+                                                        <option>Elije una opción</option>
+                                                        <option value="1">Si</option>
+                                                        <option value="0">No</option>
+                                                    </select>
                                                 </div>
-                                                <div class="col-lg-4">
-                                                    <!--                                                <div class="row separetorTopInput">-->
-                                                    <label>Dirección: </label>
-                                                    <div class="form-group">
-                                                        <textarea class="form-control" name="dirService" maxlength="50"></textarea>
-                                                    </div>
-                                                    <!--                                                </div>-->
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <!--                                                <div class="row separetorTopInput">-->
+                                                <label>Dirección: </label>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="dirService" maxlength="50"></textarea>
                                                 </div>
+                                                <!--                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
-                                </div> 
-                            </div>
+                                </div>
+                            </div> 
                         </div>
-                        <input type="submit" class="btn btn-default" value="Guardar">
-                    </form>
-                
+                    </div>
+                    <input type="submit" class="btn btn-default" value="Guardar">
+                </form>
+
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 m-md-t-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 DataTables Advanced Tables
                             </div>
-                            <div class="dataTable_wrapper m-md-t-5 ">
-                                <table width="100%" class="table table-striped table-bordered table-hover m-md-t-5" id="dataTables-example">
+                            <div class="dataTable_wrapper  ">
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
                                             <th>ID Servicio</th>
@@ -276,21 +279,31 @@ $valores = new Valores();
             </div>
             <script src="../bower_components/jquery/dist/jquery.min.js"></script>
             <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <!-- Metis Menu Plugin JavaScript -->
             <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+            <!-- DataTables JavaScript -->
+            <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+            <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+            <script src="../bower_components/datatables-responsive/js/dataTables.responsive.js"></script>
+            <!-- Custom Theme JavaScript -->
             <script src="../dist/js/sb-admin-2.js"></script>
-            <script type="text/javascript">
+            <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+            <script>
             $(document).ready(function () {
-                $("#marca").change(function () {
-                    $.ajax({
-                        url: "getMuni.php",
-                        type: "POST",
-                        data: "idmarca=" + $("#marca").val(),
-                        success: function (opciones) {
-                            $("#modelo").html(opciones);
-                        }
-                    })
+                $('#dataTables-example').DataTable({
+                    responsive: true
                 });
             });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $('#message-si').fadeOut(4000);
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $('#message-no').fadeOut(4000);
+                });
             </script>
 
     </body>

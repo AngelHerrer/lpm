@@ -51,7 +51,11 @@ class Valores {
             $name_servicio = $row['name_servicio'];
             $direccion_servicio = $row['direccion_servicio'];
             $act_servicio = $row['act_servicio'];
-            echo '<tr><td>' . $id_service . '</td><td>' . $name_servicio . '</td><td>' . $direccion_servicio . '</td><td>' . $act_servicio . '</td><td><button type="button" class="btn btn-primary">Guardar</button></td></tr>';
+             $x=0;
+            if($act_servicio==0){
+               $x=1; 
+            }
+            echo '<tr><td>' . $id_service . '</td><td>' . $name_servicio . '</td><td>' . $direccion_servicio . '</td><td><select name="act_servicio"><option selected>' . $act_servicio . '</option><option value="'.$x.'">'.$x.'</option></select></td><td><button type="button" class="btn btn-primary">Guardar</button></td></tr>';
         }
     }
 
