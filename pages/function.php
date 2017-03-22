@@ -29,11 +29,15 @@ class Valores {
         $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
     }
 
-    function saveService($nameService, $dirService, $actService) {
+    function saveService($nameSer, $zonaSer, $tel_1Ser) {
         include 'conexion.php';
-        $id_auto = $this->max_id($liga, 'servicios', 'id_service');
-        $query = "insert into servicios  values ($id_auto,'$nameService','$dirService','$actService'); ";
-//        echo $query;
+        $id_comp=1;
+        if(empty($tel_1Ser)){
+            $tel_1Ser=null;
+        }
+        $id_auto = $this->max_id($liga, 'servicios', 'id_ser');
+        $query = "insert into servicios  values ($id_auto,'$nameSer','$zonaSer',$id_comp,$tel_1Ser,null,1); ";
+        echo $query;
         $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
         if ($result) {
             echo '<script type="text/javascript">';
@@ -47,15 +51,16 @@ class Valores {
         $query = "SELECT * FROM `servicios`";
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
-            $id_service = $row['id_service'];
-            $name_servicio = $row['name_servicio'];
-            $direccion_servicio = $row['direccion_servicio'];
-            $act_servicio = $row['act_servicio'];
+            $id_ser = $row['id_ser'];
+            $nomb_ser = $row['nomb_ser'];
+            $zona_ser = $row['zona_ser'];
+            $tel1_ser = $row['tel1_ser'];
+            $bina_act = $row['bina_act'];
              $x=0;
-            if($act_servicio==0){
+            if($bina_act==0){
                $x=1; 
             }
-            echo '<tr><td>' . $id_service . '</td><td>' . $name_servicio . '</td><td>' . $direccion_servicio . '</td><td><select name="act_servicio"><option selected>' . $act_servicio . '</option><option value="'.$x.'">'.$x.'</option></select></td><td><button type="button" class="btn btn-primary">Guardar</button></td></tr>';
+            echo '<tr><td>' . $id_ser . '</td><td>' . $nomb_ser . '</td><td>' . $zona_ser . '</td><td>'.$tel1_ser.'</td><td><select name="act_servicio"><option selected>' . $bina_act . '</option><option value="'.$x.'">'.$x.'</option></select></td><td><button type="button" class="btn btn-primary">Guardar</button></td></tr>';
         }
     }
 
@@ -79,10 +84,10 @@ class Valores {
         $query = "SELECT * FROM `servicios`";
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
-            $id_service = $row['id_service'];
-            $name_servicio = $row['name_servicio'];
-            $act_servicio = $row['act_servicio'];
-            echo '<option value="' . $id_service . '">' . $name_servicio . '</option>';
+            $id_ser = $row['id_ser'];
+            $name_ser = $row['name_servicio'];
+            $bina_act = $row['act_servicio'];
+            echo '<option value="' . $id_ser . '">' . $name_ser . '</option>';
         }
     }
 
@@ -166,7 +171,7 @@ class Valores {
     function getEmpServ($idService, $weekService, $mothService, $yearService){
         include 'conexion.php';
         $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
-        $query = "SELECT * FROM prisma.emp_prisma where id_service = $idService";
+        $query = "SELECT * FROM prisma.emp_prisma where id_ser = $idService";
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
             $id_emp = $row['id_emp'];
