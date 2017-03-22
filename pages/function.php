@@ -158,6 +158,20 @@ class Valores {
             echo $opciones = '<option value="' . $id_state . '">' . $state . '</option>';
         }
     }
+    
+    function getEmpServ($idService, $weekService, $mothService, $yearService){
+        include 'conexion.php';
+        $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
+        $query = "SELECT * FROM prisma.emp_prisma where id_service = $idService";
+        $result = mysqli_query($liga, $query);
+        while ($row = mysqli_fetch_array($result)) {
+            $id_emp = $row['id_emp'];
+            $emp_name = $row['emp_name'];
+            $emp_ap_pat = $row['emp_ap_pat'];
+            $emp_ap_mat = $row['emp_ap_mat'];
+            echo '<tr><td>'.$id_emp.'</td><td>'.$emp_name.' '.$emp_ap_pat.' '.$emp_ap_mat. '</td></tr>';
+        }
+    }
 
 }
 ?>

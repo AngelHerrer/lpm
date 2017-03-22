@@ -78,7 +78,7 @@ $nomCom = $nomEmple.' '.$apPatEmple.' '.$apMatEmple;
                                         <label>Apellido Paterno: </label>
                                         <div class="form-group">
                                             
-                                            <input type="text" name="idEmp" value="<?php echo $idEmp; ?>" >
+                                            <input type="text" name="idEmp" value="<?php echo $idEmp; ?>" hidden >
                                             <input type="text" class="form-control" name="apPatEmple" value="<?php echo $apPatEmple; ?>">
                                             
                                         </div>
@@ -465,7 +465,7 @@ $nomCom = $nomEmple.' '.$apPatEmple.' '.$apMatEmple;
         </div>
           <div class="modal-footer">
               <input type="submit" class="btn btn-default" value="Editar">      
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <a type="button" class="btn btn-default" href="index.php">Close</a>
       </div>
       </div>
       
