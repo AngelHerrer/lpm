@@ -238,21 +238,9 @@ var_dump($days);
                                         <tbody>
 
                                             <?php
-                                            $valores->getEmpServ($idService);
+                                            $valores->getEmpServ($idService, $weekService, $mothService, $yearService)
                                             ?>
-                                            <?php if ($weekService == '1') {
-                                                        for($i=1; $i < 16; $i++ ){
-                                                        echo '<td><select class="form-control"><option value="1">1</option><option value="2">2</option><option value="1N">1N</option></select></td>';
-     
-                                                     }    
-                                                    } ?>
-                                                
-                                                <?php if ($weekService == '2') {
-                                                        for($i=1; $i < 16; $i++ ){
-                                                        echo '<td><select class="form-control"><option value="1">1</option><option value="2">2</option><option value="1N">1N</option></select></td>';
-     
-                                                     }    
-                                                    } ?>
+                                            
                                         </tbody>
                                     </table>
                                 </div>

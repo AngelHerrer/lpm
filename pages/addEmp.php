@@ -433,12 +433,18 @@ $valores = new Valores();
                                                 </div>
                                                 <label style="margin-left: 96px;">Seguro Social: </label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="socialEmp">
+                                                    <select class="form-control active-div-ss" name="socialEmp">
                                                         <option>---</option>
-                                                        <option>Si</option>
-                                                        <option>No</option>
-                                                        <option>Pensionado</option>
+                                                        <option value="si">Si</option>
+                                                        <option value="no">No</option>
+                                                        <option value="pen">Pensionado</option>
                                                     </select>
+                                                </div>
+                                                <div hidden id="divSS">
+                                                <label style="margin-left: 96px;">No. de Seguro Social: </label>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control"/>
+                                                </div>
                                                 </div>
                                             </div>
                                             <!-- /.col-lg-6 (nested) -->
@@ -448,15 +454,31 @@ $valores = new Valores();
                                             <div class="col-lg-12">
                                                 <label >INFONAVIT </label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="socialEmp">
+                                                    <select class="form-control active-div-in" name="socialEmp">
                                                         <option>---</option>
-                                                        <option>Si</option>
-                                                        <option>No</option>
+                                                        <option value="si">Si</option>
+                                                        <option value="no">No</option>
                                                     </select>
+                                                </div>
+                                                <div hidden id="divInf">
+                                                <label style="margin-left: 96px;">No. de INFONAVIT: </label>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control"/>
+                                                </div>
                                                 </div>
                                                 <label style="margin-left: 96px;">Cuenta bancaria: </label>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="bankEmp" placeholder="Enter bank count" maxlength="10">
+                                                    <select class="form-control active-div-cb">
+                                                        <option>---</option>
+                                                        <option value="si">Si</option>
+                                                        <option value="no">No</option>
+                                                    </select>
+                                                </div>
+                                                <div hidden id="divCban">
+                                                <label style="margin-left: 96px;">No. de cuenta bancaria: </label>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control"/>
+                                                </div>
                                                 </div>
                                             </div>
                                             <!-- /.col-lg-6 (nested) -->
@@ -551,6 +573,45 @@ $valores = new Valores();
                             $("#modelo").html(opciones);
                         }
                     })
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".active-div-cb").change(function () {
+                    var val = $('.active-div-cb').val();
+                    console.log(val);
+                    if(val === 'si'){
+                        $('#divCban').show();
+                    }else{
+                        $('#divCban').hide();
+                    }
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".active-div-in").change(function () {
+                    var val = $('.active-div-in').val();
+                    console.log(val);
+                    if(val === 'si'){
+                        $('#divInf').show();
+                    }else{
+                        $('#divInf').hide();
+                    }
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".active-div-ss").change(function () {
+                    var val = $('.active-div-ss').val();
+                    console.log(val);
+                    if(val === 'si'){
+                        $('#divSS').show();
+                    }else{
+                        $('#divSS').hide();
+                    }
                 });
             });
         </script>
