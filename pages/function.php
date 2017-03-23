@@ -71,16 +71,15 @@ class Valores {
 
     function getAllEmp() {
         include 'conexion.php';
-        $query = "SELECT * FROM `emp_prisma`";
+        $query = "select id_emp,nomb_emp,apat_emp,amat_emp,nomb_ser from empleado_ser";
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
             $idEmp = $row['id_emp'];
             $nameEmp = $row['nomb_emp'];
             $apPat = $row['apat_emp'];
             $apMat = $row['amat_emp'];
-            $serviceEmp = $row['id_service'];
-            $turnEmp = $row['emp_turn'];
-            echo '<tr><td>' . $idEmp . '</td><td>' . $nameEmp . '</td><td>' . $apPat . '</td><td>' . $apMat . '</td><td>' . $serviceEmp . '</td><td>' . $turnEmp . '</td><td align="center"><a href="getEmpleado.php?idEmp=' . $idEmp . '"><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open"></span></a></td></tr>';
+            $nomb_ser = $row['nomb_ser'];
+            echo '<tr><td>' . $idEmp . '</td><td>' . $nameEmp . '</td><td>' . $apPat . '</td><td>' . $apMat . '</td><td>' . $nomb_ser . '</td><td align="center"><a href="getEmpleado.php?idEmp=' . $idEmp . '"><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open"></span></a></td></tr>';
         }
     }
 
