@@ -21,10 +21,10 @@ class Valores {
         return $id_auto;
     }
 
-    function saveEmployee($nameEmp, $patEmp, $matEmp, $rfcEmp, $dateEmpNac, $placeEmp, $avenEmp, $colonyEmp, $postalEmp, $delegaEmp, $state, $phoneOne, $phoneTwo, $genderEmp, $civilEmp, $schoolEmp, $chilEmp, $referEmp, $socialEmp, $numSocial, $bankEmp, $turnEmp, $servEmp, $dateIng, $lockedEmp) {
+    function saveEmployee($nameEmp, $patEmp, $matEmp, $rfcEmp, $dateEmpNac, $placeEmp, $avenEmp, $colonyEmp, $postalEmp,  $state,$delegaEmp, $phoneOne, $phoneTwo, $genderEmp, $civilEmp, $schoolEmp, $chilEmp, $socialEmp, $socialNum, $referEmp, $servEmp,$dateIng,$cbEmp,$cbNum ,$infonaEmp,$infonaNum) {
         include 'conexion.php';
         $id_auto = $this->max_id($liga, 'emp_prisma', 'id_emp');
-        $query = "INSERT INTO emp_prisma VALUES ('$id_auto','$nameEmp','$patEmp','$matEmp','$rfcEmp','$dateEmpNac','$placeEmp','$avenEmp','$colonyEmp','$postalEmp','$delegaEmp','$state','$phoneOne','$phoneTwo','$genderEmp','$civilEmp','$schoolEmp','$chilEmp','$referEmp','$socialEmp','$numSocial','$turnEmp','$servEmp','$dateIng','$lockedEmp','$bankEmp')";
+        $query = "INSERT INTO emp_prisma VALUES ('$id_auto','$nameEmp','$patEmp','$matEmp','$rfcEmp','$dateEmpNac','$placeEmp','$avenEmp','$colonyEmp','$postalEmp','$state','$delegaEmp','$phoneOne','$phoneTwo','$genderEmp','$civilEmp','$schoolEmp','$chilEmp','$socialEmp','$socialNum','$referEmp','1','$servEmp','$dateIng','1','$cbEmp','$cbNum','$infonaEmp','$infonaNum')";
         echo $query;
         $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
     }
@@ -159,7 +159,7 @@ class Valores {
     function getMuni($idState) {
         include 'conexion.php';
         $opciones = '<option value="0"> Elige un municipio</option>';
-        $query = 'select nombre_municipio from prisma.municipios where id_estado =' . $idState;
+        $query = 'select * from prisma.municipios where id_estado =' . $idState;
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
             $id_state = $row['id_municipio'];

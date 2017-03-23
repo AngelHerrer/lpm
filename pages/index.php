@@ -213,7 +213,6 @@ $valores = new Valores();
                                             <th>Apellido paterno</th>
                                             <th>Apellido materno</th>
                                             <th>Servicio</th>
-                                            <th>Turno</th>
                                             <th>CSS grade</th>
                                         </tr>
                                     </thead>

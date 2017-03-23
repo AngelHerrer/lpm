@@ -291,7 +291,7 @@ $valores = new Valores();
                                                 <label>Calle /#: </label>
                                             </div>
                                             <div class="form-group col-lg-3">
-                                                <input type="text" class="form-control" >
+                                                <input type="text" class="form-control" name="avenEmp" >
                                             </div>
                                             <div class="col-lg-1">
                                                 <label>Colonia: </label>
@@ -317,7 +317,7 @@ $valores = new Valores();
                                                 <label>Estado: </label>
                                             </div>
                                             <div class="form-group col-lg-3">
-                                                <select class="form-control" name="statea" id="marca">
+                                                <select class="form-control" name="state" id="marca">
                                                     <option>-----------------</option>
                                                     <?php $valores->allState(); ?>
                                                 </select>
@@ -326,14 +326,12 @@ $valores = new Valores();
                                             <div class="col-lg-1">
                                                 <label>Municipio: </label>
                                             </div>
-                                            <div class="form-group col-lg-3">
+                                            <div class="form-group col-lg-3" id="result">
                                                 <select class="form-control" name="delegaEmp" id="modelo">
                                                     <option>--------------------</option>
                                                 </select>
                                             </div>
-                                            <div id="result" class="form-group col-lg-3">
-
-                                            </div>
+                                            
                                             <!-- /.col-lg-6 (nested) -->
                                         </div>
                                     </div>
@@ -380,7 +378,7 @@ $valores = new Valores();
                                                     <label>Género: </label>
                                                 </div>
                                                 <div class="form-group col-lg-3">
-                                                    <select class="form-control" name="$genderEmp">
+                                                    <select class="form-control" name="genderEmp">
                                                         <option>-----------</option>
                                                         <option>F</option>
                                                         <option>M</option>
@@ -443,8 +441,8 @@ $valores = new Valores();
                                                 <div class="form-group col-lg-3">
                                                     <select class="form-control active-div-ss" name="socialEmp">
                                                         <option>---</option>
-                                                        <option value="si">Si</option>
-                                                        <option value="no">No</option>
+                                                        <option value="1">Si</option>
+                                                        <option value="0">No</option>
                                                         <option value="pen">Pensionado</option>
                                                     </select>
                                                 </div>
@@ -452,20 +450,20 @@ $valores = new Valores();
                                                 <label >INFONAVIT </label>
                                                 </div>
                                                 <div class="form-group col-lg-3">
-                                                    <select class="form-control active-div-in" name="socialEmp">
+                                                    <select class="form-control active-div-in" name="infonaEmp">
                                                         <option>---</option>
-                                                        <option value="si">Si</option>
-                                                        <option value="no">No</option>
+                                                        <option value="1">Si</option>
+                                                        <option value="0">No</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-1">
                                                 <label>Cuenta bancaria: </label>
                                                 </div>
                                                 <div class="form-group col-lg-3">
-                                                    <select class="form-control active-div-cb">
+                                                    <select class="form-control active-div-cb" name="cbEmp">
                                                         <option>---</option>
-                                                        <option value="si">Si</option>
-                                                        <option value="no">No</option>
+                                                        <option value="1">Si</option>
+                                                        <option value="0">No</option>
                                                     </select>
                                                 </div>
                                                 
@@ -480,7 +478,7 @@ $valores = new Valores();
                                                 <label>No. de Seguro Social: </label>
                                                 </div>
                                                 <div class="form-group col-lg-3">
-                                                    <input type="text" class="form-control"/>
+                                                    <input type="text" class="form-control" name="socialNum"/>
                                                 </div>
                                                 </div>
                                                 <div hidden id="divInf">
@@ -488,7 +486,7 @@ $valores = new Valores();
                                                 <label>No. de INFONAVIT: </label>
                                                 </div>
                                                 <div class="form-group col-lg-3">
-                                                    <input type="text" class="form-control"/>
+                                                    <input type="text" class="form-control" name="infonaNum"/>
                                                 </div>
                                                 </div>
                                                 
@@ -497,7 +495,7 @@ $valores = new Valores();
                                                 <label >No. de cuenta bancaria: </label>
                                                 </div>
                                                 <div class="form-group col-lg-3">
-                                                    <input type="text" class="form-control"/>
+                                                    <input type="text" class="form-control" name="cbNum"/>
                                                 </div>
                                                 </div>
                                             </div>
@@ -604,7 +602,7 @@ $valores = new Valores();
                 $(".active-div-cb").change(function () {
                     var val = $('.active-div-cb').val();
                     console.log(val);
-                    if(val === 'si'){
+                    if(val === '1'){
                         $('#divCban').show();
                     }else{
                         $('#divCban').hide();
@@ -617,7 +615,7 @@ $valores = new Valores();
                 $(".active-div-in").change(function () {
                     var val = $('.active-div-in').val();
                     console.log(val);
-                    if(val === 'si'){
+                    if(val === '1'){
                         $('#divInf').show();
                     }else{
                         $('#divInf').hide();
@@ -630,7 +628,7 @@ $valores = new Valores();
                 $(".active-div-ss").change(function () {
                     var val = $('.active-div-ss').val();
                     console.log(val);
-                    if(val === 'si'){
+                    if(val === '1'){
                         $('#divSS').show();
                     }else{
                         $('#divSS').hide();
@@ -642,3 +640,4 @@ $valores = new Valores();
     </body>
 
 </html>
+
