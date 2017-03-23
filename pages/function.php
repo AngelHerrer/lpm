@@ -75,10 +75,10 @@ class Valores {
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
             $idEmp = $row['id_emp'];
-            $nameEmp = $row['emp_name'];
-            $apPat = $row['emp_ap_pat'];
-            $apMat = $row['emp_ap_mat'];
-            $serviceEmp = $row['emp_service'];
+            $nameEmp = $row['nomb_emp'];
+            $apPat = $row['apat_emp'];
+            $apMat = $row['amat_emp'];
+            $serviceEmp = $row['id_service'];
             $turnEmp = $row['emp_turn'];
             echo '<tr><td>' . $idEmp . '</td><td>' . $nameEmp . '</td><td>' . $apPat . '</td><td>' . $apMat . '</td><td>' . $serviceEmp . '</td><td>' . $turnEmp . '</td><td align="center"><a href="getEmpleado.php?idEmp=' . $idEmp . '"><span style="margin-left:10px;" class="glyphicon glyphicon-eye-open"></span></a></td></tr>';
         }
