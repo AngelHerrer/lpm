@@ -85,7 +85,7 @@ class Valores {
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
             $id_ser = $row['id_ser'];
-            $name_ser = $row['name_servicio'];
+            $name_ser = $row['nomb_ser'];
             $bina_act = $row['act_servicio'];
             echo '<option value="' . $id_ser . '">' . $name_ser . '</option>';
         }
