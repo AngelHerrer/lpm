@@ -31,9 +31,9 @@ class Valores {
 
     function saveService($nameSer, $zonaSer, $tel_1Ser) {
         include 'conexion.php';
-        $id_comp=1;
-        if(empty($tel_1Ser)){
-            $tel_1Ser=null;
+        $id_comp = 1;
+        if (empty($tel_1Ser)) {
+            $tel_1Ser = 'null';
         }
         $id_auto = $this->max_id($liga, 'servicios', 'id_ser');
         $query = "insert into servicios  values ($id_auto,'$nameSer','$zonaSer',$id_comp,$tel_1Ser,null,1); ";
@@ -56,11 +56,16 @@ class Valores {
             $zona_ser = $row['zona_ser'];
             $tel1_ser = $row['tel1_ser'];
             $bina_act = $row['bina_act'];
-             $x=0;
-            if($bina_act==0){
-               $x=1; 
+            $x = 0;
+            if ($bina_act == 0) {
+                $x = 1;
             }
-            echo '<tr><td>' . $id_ser . '</td><td>' . $nomb_ser . '</td><td>' . $zona_ser . '</td><td>'.$tel1_ser.'</td><td><select name="act_servicio"><option selected>' . $bina_act . '</option><option value="'.$x.'">'.$x.'</option></select></td><td><button type="button" class="btn btn-primary">Guardar</button></td></tr>';
+            if (empty($tel1_ser)) {
+                $inp='<input type="tel" name="tel1_ser">';
+            }else{
+                $inp=$tel1_ser;
+            }
+                echo '<tr><td>' . $id_ser . '</td><td>' . $nomb_ser . '</td><td>' . $zona_ser . '</td><td>'.$inp.'<input type="text" value="' . $id_ser . '" name="id_ser"></td><td><select name="act_servicio"><option selected>' . $bina_act . '</option><option value="' . $x . '">' . $x . '</option></select></td><td><button type="submit" class="btn btn-primary">Guardar</button></td></tr>';
         }
     }
 
@@ -86,7 +91,7 @@ class Valores {
         while ($row = mysqli_fetch_array($result)) {
             $id_ser = $row['id_ser'];
             $name_ser = $row['nomb_ser'];
-            $bina_act = $row['act_servicio'];
+            //$bina_act = $row['act_servicio'];
             echo '<option value="' . $id_ser . '">' . $name_ser . '</option>';
         }
     }
@@ -167,8 +172,8 @@ class Valores {
             echo $opciones = '<option value="' . $id_state . '">' . $state . '</option>';
         }
     }
-    
-    function getEmpServ($idService, $weekService, $mothService, $yearService){
+
+    function getEmpServ($idService, $weekService, $mothService, $yearService) {
         include 'conexion.php';
         $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
         $query = "SELECT * FROM prisma.emp_prisma where id_ser = $idService";
@@ -178,7 +183,26 @@ class Valores {
             $emp_name = $row['emp_name'];
             $emp_ap_pat = $row['emp_ap_pat'];
             $emp_ap_mat = $row['emp_ap_mat'];
-            echo '<tr><td>'.$id_emp.'</td><td>'.$emp_name.' '.$emp_ap_pat.' '.$emp_ap_mat. '</td></tr>';
+            echo '<tr><td>' . $id_emp . '</td><td>' . $emp_name . ' ' . $emp_ap_pat . ' ' . $emp_ap_mat . '</td></tr>';
+        }
+    }
+
+    function updateServ($idSer, $tel1_ser, $act_servicio) {
+        include 'conexion.php';
+        if (empty($tel1_ser)) {
+            $query = "UPDATE `servicios` SET `bina_act`=$act_servicio WHERE `id_ser`=$idSer";
+        } elseif (empty($act_servicio)) {
+            $query = "UPDATE `servicios` SET `tel1_ser`=$tel1_ser WHERE `id_ser`=$idSer";
+        } else {
+            $query = "UPDATE `servicios` SET `tel1_ser`=$tel1_ser,`bina_act`=$act_servicio WHERE `id_ser`=$idSer";
+        }
+        echo $query;
+        die();
+        $result = mysqli_query($liga, $query) or die("<script>window.location.href='addService.php?edit=no';</script>");
+        if ($result) {
+            echo '<script type="text/javascript">';
+            echo 'window.location.href="addService.php?update=ok";';
+            echo '</script>';
         }
     }
 

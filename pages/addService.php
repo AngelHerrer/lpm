@@ -254,7 +254,7 @@ $valores = new Valores();
                             <div class="panel-heading">
                                 DataTables Advanced Tables
                             </div>
-                            <form action="#" method="#">
+                            <form action="updateService.php" method="post">
                                 <div class="dataTable_wrapper  ">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
