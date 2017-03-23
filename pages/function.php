@@ -21,7 +21,7 @@ class Valores {
         return $id_auto;
     }
 
-    function saveEmployee($nameEmp, $patEmp, $matEmp, $rfcEmp, $dateEmpNac, $placeEmp, $avenEmp, $colonyEmp, $postalEmp,  $state,$delegaEmp, $phoneOne, $phoneTwo, $genderEmp, $civilEmp, $schoolEmp, $chilEmp, $socialEmp, $socialNum, $referEmp, $servEmp,$dateIng,$cbEmp,$cbNum ,$infonaEmp,$infonaNum) {
+    function saveEmployee($nameEmp, $patEmp, $matEmp, $rfcEmp, $dateEmpNac, $placeEmp, $avenEmp, $colonyEmp, $postalEmp, $state, $delegaEmp, $phoneOne, $phoneTwo, $genderEmp, $civilEmp, $schoolEmp, $chilEmp, $socialEmp, $socialNum, $referEmp, $servEmp, $dateIng, $cbEmp, $cbNum, $infonaEmp, $infonaNum) {
         include 'conexion.php';
         $id_auto = $this->max_id($liga, 'emp_prisma', 'id_emp');
         $query = "INSERT INTO emp_prisma VALUES ('$id_auto','$nameEmp','$patEmp','$matEmp','$rfcEmp','$dateEmpNac','$placeEmp','$avenEmp','$colonyEmp','$postalEmp','$state','$delegaEmp','$phoneOne','$phoneTwo','$genderEmp','$civilEmp','$schoolEmp','$chilEmp','$socialEmp','$socialNum','$referEmp','1','$servEmp','$dateIng','1','$cbEmp','$cbNum','$infonaEmp','$infonaNum')";
@@ -61,11 +61,11 @@ class Valores {
                 $x = 1;
             }
             if (empty($tel1_ser)) {
-                $inp='<input type="tel" name="tel1_ser">';
-            }else{
-                $inp=$tel1_ser;
+                $inp = '<input type="tel" name="tel1_ser">';
+            } else {
+                $inp = $tel1_ser;
             }
-                echo '<tr><td>' . $id_ser . '</td><td>' . $nomb_ser . '</td><td>' . $zona_ser . '</td><td>'.$inp.'<input type="text" value="' . $id_ser . '" name="id_ser"></td><td><select name="act_servicio"><option selected>' . $bina_act . '</option><option value="' . $x . '">' . $x . '</option></select></td><td><button type="submit" class="btn btn-primary">Guardar</button></td></tr>';
+            echo '<tr><td>' . $id_ser . '</td><td>' . $nomb_ser . '</td><td>' . $zona_ser . '</td><td>' . $inp . '<input type="text" value="' . $id_ser . '" name="id_ser"></td><td><select name="act_servicio"><option selected>' . $bina_act . '</option><option value="' . $x . '">' . $x . '</option></select></td><td><button type="submit" class="btn btn-primary">Guardar</button></td></tr>';
         }
     }
 
@@ -89,9 +89,9 @@ class Valores {
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
             $id_ser = $row['id_ser'];
-            $name_ser = $row['nomb_ser'];
+            $nomb_ser = $row['nomb_ser'];
             //$bina_act = $row['act_servicio'];
-            echo '<option value="' . $id_ser . '">' . $name_ser . '</option>';
+            echo '<option value="' . $id_ser . '">' . $nomb_ser . '</option>';
         }
     }
 
@@ -172,17 +172,28 @@ class Valores {
         }
     }
 
-    function getEmpServ($idService, $weekService, $mothService, $yearService) {
+    function getEmpServ($idService, $weekService, $mothService, $yearService, $i) {
         include 'conexion.php';
         $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
         $query = "SELECT * FROM prisma.emp_prisma where id_ser = $idService";
         $result = mysqli_query($liga, $query);
+
+        $selects = '';
+        if ($weekService == '1') {
+            for ($i = 1; $i < 16; $i++) {
+                $selects .= '<td><select><option>hola</option></select></td>';
+            }
+        } elseif ($weekService == '2') {
+            for ($i = 16; $i < 31; $i++) {
+                $selects .= '<td><select><option>hola</option></select></td>';
+            }
+        }
         while ($row = mysqli_fetch_array($result)) {
             $id_emp = $row['id_emp'];
-            $emp_name = $row['emp_name'];
-            $emp_ap_pat = $row['emp_ap_pat'];
-            $emp_ap_mat = $row['emp_ap_mat'];
-            echo '<tr><td>' . $id_emp . '</td><td>' . $emp_name . ' ' . $emp_ap_pat . ' ' . $emp_ap_mat . '</td></tr>';
+            $nomb_emp = $row['nomb_emp'];
+            $apat_emp = $row['apat_emp'];
+            $amat_emp = $row['amat_emp'];
+            echo '<tr><td>' . $id_emp . '</td><td>' . $nomb_emp . ' ' . $apat_emp . ' ' . $amat_emp . '</td>' . $selects . '</tr>';
         }
     }
 

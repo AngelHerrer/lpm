@@ -4,9 +4,6 @@ include 'function.php';
 $valores = new Valores();
 extract($_REQUEST);
 
-var_dump($yearService);
-var_dump($mothService);
-var_dump($weekService);
 
 $days = cal_days_in_month(CAL_GREGORIAN, $mothService , $yearService);
 
@@ -215,7 +212,7 @@ var_dump($days);
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <div class="dataTable_wrapper">
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <table width="100%" style="font-size: 10px;"class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
                                             <tr>
                                                 <th>ID Empleado</th>
@@ -228,7 +225,7 @@ var_dump($days);
                                                     } ?>
                                                 
                                                 <?php if ($weekService == '2') {
-                                                        for($i=1; $i < 16; $i++ ){
+                                                        for($i=16; $i < 31; $i++ ){
                                                         echo '<th>'.$i.'</th>';
      
                                                      }    
@@ -238,7 +235,7 @@ var_dump($days);
                                         <tbody>
 
                                             <?php
-                                            $valores->getEmpServ($idService, $weekService, $mothService, $yearService)
+                                            $valores->getEmpServ($idService, $weekService, $mothService, $yearService,$i)
                                             ?>
                                             
                                         </tbody>
