@@ -42,7 +42,7 @@ $valores = new Valores();
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
+       
     </head>
 
     <body>
@@ -58,7 +58,7 @@ $valores = new Valores();
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                    <a class="navbar-brand" href="index.php"><p>Limpieza Prisma</p></a>
                 </div>
                 <!-- /.navbar-header -->
 
@@ -83,17 +83,18 @@ $valores = new Valores();
                 <!-- /.navbar-top-links -->
 
                 <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse">
+                    <div class="sidebar-nav navbar-collapse m-md-t-5">
                         <ul class="nav" id="side-menu">
-                            <li class="sidebar-search">
-                                <div class="input-group custom-search-form">
-                                    <input type="text" class="form-control" placeholder="Search...">
+                            <li class="sidebar-Buscar">
+<!--                                <img src="img/logo.png" width="20%" height="" class="center-block">-->
+<!--                                <div class="input-group custom-Buscar-form">
+                                    <input type="text" class="form-control" placeholder="Buscar...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="button">
-                                            <i class="fa fa-search"></i>
+                                            <i class="fa fa-Buscar"></i>
                                         </button>
                                     </span>
-                                </div>
+                                </div>-->
                             </li>
                             <li>
                                 <a href="index.php"><i class="glyphicon glyphicon-user fa-fw"></i> Empleados</a>
@@ -205,7 +206,7 @@ $valores = new Valores();
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
-                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table width="100%" class="table table-striped table-bordered table-hover table-responsive" id="dataTables-example">
                                     <thead>
                                         <tr>
                                             <th>ID Empleado</th>

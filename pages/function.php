@@ -85,7 +85,7 @@ class Valores {
 
     function getServices() {
         include 'conexion.php';
-        $query = "SELECT * FROM `servicios`";
+        $query = "SELECT * FROM `servicios` order by nomb_ser asc";
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
             $id_ser = $row['id_ser'];
