@@ -2,6 +2,7 @@
 error_reporting(E_ALL ^ E_NOTICE);
 include 'function.php';
 $valores = new Valores();
+$days = cal_days_in_month(CAL_GREGORIAN, $mothService , $yearService);
 ?>
 <!DOCTYPE html>
 <html lang="en">

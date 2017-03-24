@@ -211,11 +211,15 @@ var_dump($days);
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
+                                
                                 <div class="dataTable_wrapper">
+                                    <div class="col-md-offset-10 col-md-2">
+                                    <button type="button" class="btn btn-success">Success</button>
+                                    </div>
                                     <table width="100%" style="font-size: 10px;"class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
                                             <tr>
-                                                <th>ID Empleado</th>
+                                                <th>ID</th>
                                                 <th>Nombre del empleado</th>
                                                 <?php if ($weekService == '1') {
                                                         for($i=1; $i < 16; $i++ ){

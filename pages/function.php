@@ -177,23 +177,27 @@ class Valores {
         $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
         $query = "SELECT * FROM prisma.emp_prisma where id_ser = $idService";
         $result = mysqli_query($liga, $query);
-
+        
         $selects = '';
         if ($weekService == '1') {
             for ($i = 1; $i < 16; $i++) {
-                $selects .= '<td><select><option>hola</option></select></td>';
+                $selects .= '<td><select name="turnos"><option>---</option>'.$this->getTurnos().'</select></td>';
+                
             }
         } elseif ($weekService == '2') {
             for ($i = 16; $i < 31; $i++) {
-                $selects .= '<td><select><option>hola</option></select></td>';
+                $selects .= '<td><select name="turno"><option>---</option>'.$this->getTurnos().'</select></td>';
+                
             }
         }
+        
         while ($row = mysqli_fetch_array($result)) {
+            
             $id_emp = $row['id_emp'];
             $nomb_emp = $row['nomb_emp'];
             $apat_emp = $row['apat_emp'];
             $amat_emp = $row['amat_emp'];
-            echo '<tr><td>' . $id_emp . '</td><td>' . $nomb_emp . ' ' . $apat_emp . ' ' . $amat_emp . '</td>' . $selects . '</tr>';
+            echo '<tr><td>' . $id_emp . '</td><td>' . $nomb_emp . ' ' . $apat_emp . ' ' . $amat_emp . '</td>'.$selects.'</tr>';
         }
     }
 
@@ -214,6 +218,17 @@ class Valores {
             echo 'window.location.href="addService.php?update=ok";';
             echo '</script>';
         }
+    }
+    function getTurnos(){
+        include 'conexion.php';
+        $query = "SELECT * FROM turnos";
+        $result = mysqli_query($liga, $query);
+        while ($row = mysqli_fetch_array($result)) {
+            $id_turn = $row['id_turn'];
+            $alias_turn = $row['alias_turn'];
+                $select.='<option value="' . $id_turn . '">' . $alias_turn . '</option>';
+        }
+        return $select;
     }
 
 }
