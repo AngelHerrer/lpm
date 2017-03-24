@@ -159,7 +159,7 @@ class Valores {
                 . "`fhin_emp`='$dateAdmEmple',`bina_blo`='$lockedEmple',`ncuen_emp`='$bankEmple', `ninfonavi_emp`='$infonaEmple' WHERE `id_emp`=$idEmp";
 
         echo $query;
-        $result = mysqli_query($liga, $query) or die();
+        $result = mysqli_query($liga, $query) or die("<script>window.location.href='index.php?edit=no';</script>");
     }
 
     function getMuni($idState) {
