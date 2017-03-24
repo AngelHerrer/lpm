@@ -97,40 +97,42 @@ class Valores {
 
     function getEmp($idEmp) {
         include 'conexion.php';
-        $query = "select * from `emp_prisma` where id_emp = '$idEmp'";
+        $query = "select * from `empleado_ser` where id_emp = '$idEmp'";
         $result = mysqli_query($liga, $query);
         while ($row = mysqli_fetch_array($result)) {
             $idEmple = $row['id_emp'];
-            $nomEmple = $row['emp_name'];
-            $apPatEmple = $row['emp_ap_pat'];
-            $apMatEmple = $row['emp_ap_mat'];
-            $rfcEmple = $row['emp_rfc'];
-            $dateNacEmple = $row['emp_date_nac'];
-            $placeBirEmple = $row['emp_place_birth'];
-            $avEmple = $row['emp_avenue'];
-            $colonyEmple = $row['emp_colony'];
-            $cpEmple = $row['emp_postal_code'];
-            $delEmple = $row['emp_delegation'];
-            $stateEmple = $row['emp_state'];
-            $phoneEmple = $row['emp_phone'];
-            $phoneTwoEmple = $row['emp_phone_two'];
-            $genderEmple = $row['emp_gender'];
-            $civilEmple = $row['emp_civil_status'];
-            $schoEmple = $row['emp_ scholarship'];
-            $chilEmple = $row['emp_children'];
-            $referEmple = $row['emp_ reference'];
-            $socialEmple = $row['emp_social_option'];
-            $socSecuEmple = $row['emp_social_security'];
-            $turnEmple = $row['emp_turn'];
-            $serviceEmple = $row['emp_service'];
-            $dateAdmEmple = $row['emp_date_admission'];
-            $lockedEmple = $row['emp_locked'];
-            $bankEmple = $row['emp_bank_account'];
+            $nomEmple = $row['nomb_emp'];
+            $apPatEmple = $row['apat_emp'];
+            $apMatEmple = $row['amat_emp'];
+            $rfcEmple = $row['refc_emp'];
+            $dateNacEmple = $row['fhna_emp'];
+            $placeBirEmple = $row['id_stateN'];
+            $avEmple = $row['canu_emp'];
+            $colonyEmple = $row['colo_emp'];
+            $cpEmple = $row['copo_emp'];
+            $delEmple = $row['id_state'];
+            $stateEmple = $row['id_municipio'];
+            $phoneEmple = $row['tel1_emp'];
+            $phoneTwoEmple = $row['tel2_emp'];
+            $genderEmple = $row['gene_emp'];
+            $civilEmple = $row['eciv_emp'];
+            $schoEmple = $row['esco_emp'];
+            $chilEmple = $row['nuhi_emp'];
+            $referEmple = $row['dref_emp'];
+            $id_ser = $row['id_ser'];
+            //$socialEmple = $row[''];
+            $socSecuEmple = $row['sectso_emp'];
+            $infonaEmple = $row['ninfonavi_emp'];
+            $serviceEmple = $row['nomb_ser'];
+            $dateAdmEmple = $row['fhin_emp'];
+            $lockedEmple = $row ['bina_blo'];
+            //$lockedEmple = $row['emp_locked'];
+            $bankEmple = $row['ncuen_emp'];
 
             return array($idEmple, $nomEmple, $apPatEmple, $apMatEmple, $rfcEmple, $dateNacEmple,
                 $placeBirEmple, $avEmple, $colonyEmple, $cpEmple, $delEmple, $stateEmple, $phoneEmple, $phoneTwoEmple,
                 $genderEmple, $civilEmple, $schoEmple, $chilEmple, $referEmple, $socialEmple, $socSecuEmple,
-                $turnEmple, $serviceEmple, $dateAdmEmple, $lockedEmple, $bankEmple);
+                $id_ser, $serviceEmple, $dateAdmEmple, $lockedEmple, $bankEmple, $infonaEmple);
         }
     }
 
@@ -145,19 +147,19 @@ class Valores {
         }
     }
 
-    function updateEmple($idEmp, $nomEmple, $apPatEmple, $apMatEmple, $rfcEmple, $dateNacEmple, $placeBirEmple, $avEmple, $colonyEmple, $cpEmple, $delEmple, $stateEmple, $phoneEmple, $phoneTwoEmple, $genderEmple, $civilEmple, $schoEmple, $chilEmple, $referEmple, $socialEmple, $socSecuEmple, $turnEmple, $serviceEmple, $dateAdmEmple, $lockedEmple, $bankEmple) {
+    function updateEmple($idEmp, $nomEmple, $apPatEmple, $apMatEmple, $rfcEmple, $dateNacEmple, $placeBirEmple, $avEmple, $colonyEmple, $cpEmple, $delEmple, $stateEmple, $phoneEmple, $phoneTwoEmple, $genderEmple, $civilEmple, $schoEmple, $chilEmple, $referEmple, $socialEmple, $socSecuEmple, $turnEmple, $serviceEmple, $dateAdmEmple, $lockedEmple, $bankEmple, $infonaEmple) {
         include 'conexion.php';
-        $query = "UPDATE `emp_prisma` SET `emp_name`='$nomEmple',`emp_ap_pat`='$apPatEmple',"
-                . "`emp_ap_mat`='$apMatEmple',`emp_rfc`='$rfcEmple',`emp_date_nac`='$dateNacEmple',`emp_place_birth`='$placeBirEmple',"
-                . "`emp_avenue`='$avEmple',`emp_colony`='$colonyEmple',`emp_postal_code`='$cpEmple',"
-                . "`emp_delegation`='$delEmple',`emp_state`='$stateEmple',`emp_phone`='$phoneEmple',`emp_phone_two`='$phoneTwoEmple',"
-                . "`emp_gender`='$genderEmple',`emp_civil_status`='$civilEmple',`emp_ scholarship`='$schoEmple',"
-                . "`emp_children`='$chilEmple',`emp_ reference`='$referEmple',`emp_social_option`='$socialEmple',"
-                . "`emp_social_security`='$socSecuEmple',`emp_turn`='$turnEmple',`emp_service`='$serviceEmple',"
-                . "`emp_date_admission`='$dateAdmEmple',`emp_locked`='$lockedEmple',`emp_bank_account`='$bankEmple' WHERE `id_emp`=$idEmp";
+        $query = "UPDATE `emp_prisma` SET `nomb_emp`='$nomEmple',`apat_emp`='$apPatEmple',"
+                . "`amat_emp`='$apMatEmple',`refc_emp`='$rfcEmple',`fhna_emp`='$dateNacEmple',`id_stateN`='$placeBirEmple',"
+                . "`canu_emp`='$avEmple',`colo_emp`='$colonyEmple',`copo_emp`='$cpEmple',"
+                . "`id_municipio`='$delEmple',`id_state`='$stateEmple',`tel1_emp`='$phoneEmple',`tel2_emp`='$phoneTwoEmple',"
+                . "`gene_emp`='$genderEmple',`eciv_emp`='$civilEmple',`esco_emp`='$schoEmple',"
+                . "`nuhi_emp`='$chilEmple',`dref_emp`='$referEmple',"
+                . "`sectso_emp`='$socSecuEmple',`id_ser`='$serviceEmple',"
+                . "`fhin_emp`='$dateAdmEmple',`bina_blo`='$lockedEmple',`ncuen_emp`='$bankEmple', `ninfonavi_emp`='$infonaEmple' WHERE `id_emp`=$idEmp";
 
-
-        $result = mysqli_query($liga, $query) or die("<script>window.location.href='index.php?edit=no';</script>");
+        echo $query;
+        $result = mysqli_query($liga, $query) or die();
     }
 
     function getMuni($idState) {
