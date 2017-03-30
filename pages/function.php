@@ -179,7 +179,6 @@ class Valores {
         $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
         $query = "SELECT * FROM prisma.emp_prisma where id_ser = $idService";
         $result = mysqli_query($liga, $query);
-        
         $selects = '';
         if ($weekService == '1') {
             for ($i = 1; $i < 16; $i++) {
