@@ -307,7 +307,7 @@ $valores = new Valores();
                                                 <label>Fecha de nacimiento: </label>
                                             </div>
                                             <div class="form-group col-lg-3">
-                                                <input type="date" class="form-control" name="dateEmpNac" id="F_NACIMIENTO" onchange="calculaRFC();" required>
+                                                <input type="text" class="form-control" name="dateEmpNac" id="F_NACIMIENTO" onchange="calculaRFC();" required>
                                             </div>
                                             <div class="col-lg-1">
                                                 <label>Lugar de nacimiento: </label>
