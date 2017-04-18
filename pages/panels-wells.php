@@ -237,7 +237,8 @@ extract($_REQUEST);
                                 <div class="dataTable_wrapper">
                                     <div class="col-md-offset-10 col-md-2">
                                     </div>
-                                    <table width="100%" style="font-size: 10px;"class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <form action="getValueTable.php" method="post">
+                                        <table id="tabla" width="100%" style="font-size: 10px;"class="table table-striped table-bordered table-hover" >
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -266,6 +267,8 @@ extract($_REQUEST);
 
                                         </tbody>
                                     </table>
+                                        <input type="submit" value="enviar">
+                                        </form>
                                 </div>
                             </div>   
                         </div>
@@ -308,6 +311,9 @@ extract($_REQUEST);
             $('#message-no').fadeOut(4000);
         });
     </script>
+    
+    
+    
 
 </body>
 

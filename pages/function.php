@@ -175,19 +175,22 @@ class Valores {
     }
 
     function getEmpServ($idService, $weekService, $mothService, $yearService, $i) {
+        
         include 'conexion.php';
         $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
-        $query = "SELECT * FROM prisma.emp_prisma where id_ser = $idService";
+        $query = "SELECT * FROM emp_prisma where id_ser = $idService";
+        //<td><select name="turno'.'2'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'3'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'4'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'5'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'6'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'7'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'8'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'9'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'10'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'11'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'12'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'13'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'14'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'15'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td></tr>
         $result = mysqli_query($liga, $query);
         $selects = '';
         if ($weekService == '1') {
-            for ($i = 1; $i < 16; $i++) {
-                $selects .= '<td><select name="turnos"><option>---</option>'.$this->getTurnos().'</select></td>';
+        for ($i = 0; $i < 15; $i++) {
+             
+                $selects .= '<td><select name="turno[]"><option value="0">---</option>'.$this->getTurnos().'</select></td>';
                 
-            }
+            }    
         } elseif ($weekService == '2') {
             for ($i = 16; $i < 31; $i++) {
-                $selects .= '<td><select name="turno"><option>---</option>'.$this->getTurnos().'</select></td>';
+                $selects .= '<td><select name="turno2'.$i.'"><option value="0">---</option>'.$this->getTurnos().'</select></td>';
                 
             }
         }
@@ -195,10 +198,12 @@ class Valores {
         while ($row = mysqli_fetch_array($result)) {
             
             $id_emp = $row['id_emp'];
+            
             $nomb_emp = $row['nomb_emp'];
             $apat_emp = $row['apat_emp'];
             $amat_emp = $row['amat_emp'];
-            echo '<tr><td>' . $id_emp . '</td><td>' . $nomb_emp . ' ' . $apat_emp . ' ' . $amat_emp . '</td>'.$selects.'</tr>';
+            
+            echo '<tr><td>' . $id_emp . '<input type="checkbox" value="'.$id_emp.'" name="idEmp[]" checked hidden></td><td>' . $nomb_emp . ' ' . $apat_emp . ' ' . $amat_emp . '</td>'.$selects.'</tr>';
         }
     }
 
