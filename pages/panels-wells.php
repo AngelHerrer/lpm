@@ -252,8 +252,9 @@ extract($_REQUEST);
                                                 ?>
 
                                                 <?php
+                                                $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
                                                 if ($weekService == '2') {
-                                                    for ($i = 16; $i < 31; $i++) {
+                                                    for ($i = 16; $i <= $days; $i++) {
                                                         echo '<th>' . $i . '</th>';
                                                     }
                                                 }
@@ -267,6 +268,10 @@ extract($_REQUEST);
 
                                         </tbody>
                                     </table>
+                                        <input type="text" name="yearService" value="<?php echo $yearService; ?>">
+                                        <input type="text" name="mothService" value="<?php echo $mothService; ?>">
+                                        <input type="text" name="weekService" value="<?php echo $weekService; ?>">
+                                        <input type="text" name="idService" value="<?php echo $idService; ?>">
                                         <input type="submit" value="enviar">
                                         </form>
                                 </div>

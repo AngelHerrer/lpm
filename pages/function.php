@@ -185,12 +185,12 @@ class Valores {
         if ($weekService == '1') {
         for ($i = 0; $i < 15; $i++) {
              
-                $selects .= '<td><select name="turno[]"><option value="0">---</option>'.$this->getTurnos().'</select></td>';
+                $selects .= '<td><input type="checkbox" value="'.$i.'" name="dias[]" checked  /><select name="turno[]"><option value="0">---</option>'.$this->getTurnos().'</select></td>';
                 
             }    
         } elseif ($weekService == '2') {
-            for ($i = 16; $i < 31; $i++) {
-                $selects .= '<td><select name="turno2'.$i.'"><option value="0">---</option>'.$this->getTurnos().'</select></td>';
+            for ($i = 16; $i <= $days ; $i++) {
+                $selects .= '<td><input type="checkbox" value="'.$i.'" name="dias[]" checked  /><select name="turno[]'.$i.'"><option value="0">---</option>'.$this->getTurnos().'</select></td>';
                 
             }
         }
