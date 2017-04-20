@@ -2,6 +2,12 @@
 error_reporting(E_ALL ^ E_NOTICE);
 include 'function.php';
 $valores = new Valores();
+
+extract($_REQUEST);
+//$mes = '03';
+//$quincena = 1;
+//$id_serv = 2;
+//$anno = 2017;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,19 +24,13 @@ $valores = new Valores();
 
         <!-- Bootstrap Core CSS -->
         <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-        <link href="../dist/css/base.css" rel="stylesheet" type="text/css"/>
+
         <!-- MetisMenu CSS -->
         <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
-        <!-- Timeline CSS -->
-        <link href="../dist/css/timeline.css" rel="stylesheet">
-
         <!-- Custom CSS -->
         <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-        <!-- Morris Charts CSS -->
-        <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+        <link href="../dist/css/base.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
         <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -41,24 +41,8 @@ $valores = new Valores();
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#marca").change(function () {
-                    $.ajax({
-                        url: "getMuni.php",
-                        type: "POST",
-                        data: "idmarca=" + $("#marca").val(),
-                        success: function (opciones) {
-                            $("#modelo").html(opciones);
-                        }
-                    })
-                });
-            });
-        </script>
 
     </head>
-
-
 
     <body>
 
@@ -101,14 +85,14 @@ $valores = new Valores();
                     <div class="sidebar-nav navbar-collapse m-md-t-5">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-Buscar">
-<!--                                <div class="input-group custom-Buscar-form">
-                                    <input type="text" class="form-control" placeholder="Buscar...">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="fa fa-Buscar"></i>
-                                        </button>
-                                    </span>
-                                </div>-->
+                                <!--                                <div class="input-group custom-Buscar-form">
+                                                                    <input type="text" class="form-control" placeholder="Buscar...">
+                                                                    <span class="input-group-btn">
+                                                                        <button class="btn btn-default" type="button">
+                                                                            <i class="fa fa-Buscar"></i>
+                                                                        </button>
+                                                                    </span>
+                                                                </div>-->
                             </li>
                             <li>
                                 <a href="index.php"><i class="glyphicon glyphicon-user fa-fw"></i> Empleados</a>
@@ -190,124 +174,151 @@ $valores = new Valores();
                     </div>
                 </div>
             </nav>
+            <!--CONTENIDO-->
             <div id="page-wrapper">
-                <br>
                 <div class="row">
-                    <?php
-                    if ($_GET['succes'] == "ok") {
-                        echo '<div class="alert alert-success fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                            Se dio de alta el servicio con éxito.
-                                            </div>';
-                    }
-                    ?> 
-                    <div class="col-lg-12">
-                        <h2 class="page-header">Dar de alta un Servicio</h2>
-                    </div>
+                    <form action="nomina.php" method="post" class="form-inline">
+                        <div class="col-md-12">
+                            <div class="col-lg-12">
+                                <h2 class="page-header ">Turnos</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-1">
+                                <label>Año</label>
+                                <select class="form-control" required name="anno">
+                                    <option value="">----</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <label>Mes</label>
+                                <select class="form-control" required name="mes">
+                                    <option value="">---</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <label>Quincena</label>
+                                <select class="form-control" required name="quincena">
+                                    <option value="">--</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Servicio</label>
+
+                                <select class="form-control" required name="id_serv">
+                                    <option value="">----</option>
+                                    <?php $valores->getServices(); ?>
+                                </select>
+
+                            </div>
+                            <div class="col-md-offset-1 col-md-2">
+                                <button type="submit" class="btn btn-primary m-md-t-2_5">Aceptar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
-                <form role="form" action="executeSaveService.php" method="post" class="form-inline">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Datos generales
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="col-lg-4">
-                                                <label>Empresa: </label>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" name="nameSer" placeholder="Nombre de la empresa">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <label>Zona: </label>
-                                                <div class="form-group">
-                                                    <input class="form-control" type="text" name="zonaSer">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <!--                                                <div class="row separetorTopInput">-->
-                                                <label>Telefono: </label>
-                                                <div class="form-group">
-                                                    <input class="form-control" type="tel" name="tel_1Ser">
-                                                </div>
-                                                <!--                                                </div>-->
-                                            </div>
-                                            <div class="col-lg-2">
-                                                <input type="submit" class="btn btn-default" value="Guardar">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-
-                </form>
 
                 <div class="row">
-                    <div class="col-lg-12 m-md-t-4">
+                    <div class="col-lg-12 m-md-t-2">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                DataTables Advanced Tables
+                                Generar Archivo
                             </div>
-                            <form action="updateService.php" method="post">
-                                <div class="dataTable_wrapper  ">
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                        <thead>
-                                            <tr>
-                                                <th>ID Servicio</th>
-                                                <th>Nombre</th>
-                                                <th>Zona</th>
-                                                <th>Telefono</th>
-                                                <th>Activo</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $valores->getAllService();
-                                            ?>
-                                        </tbody>
-                                    </table>
+                            <div class="panel-body">
+                                <div class="dataTable_wrapper">
+                                    <div class="col-md-offset-10 col-md-2">
+                                    </div>
+                                    <form action="generaFile.php" method="post">
+                                        <table width="100%" class="table table-striped table-bordered table-hover table-responsive" id="dataTablesexample">
+                                            <thead>
+                                                <tr>
+
+                                                    <?php if ($quincena == '1') { ?>
+                                                        <th>Nombre</th><th>D1</th><th>D2</th><th>D3</th><th>D4</th><th>D5</th><th>D6</th><th>D7</th><th>D8</th><th>D9</th><th>D10</th><th>D11</th><th>D12</th><th>D13</th><th>D14</th><th>D15</th><th>Extras</th><th>Total</th>
+                                                        <?php $valores->nomina($anno, $mes, $quincena, $id_serv); ?>
+                                                    <?php } ?>
+                                                    <?php if ($quincena == '2') { ?>
+                                                        <th>Nombre</th><th>D16</th><th>D17</th><th>D18</th><th>D19</th><th>D20</th><th>D21</th><th>D22</th><th>D23</th><th>D24</th><th>D25</th><th>D26</th><th>D27</th><th>D28</th><th>D29</th><th>D30</th><th>D31</th><th>Extras</th><th>Total</th>
+                                                        <?php $valores->nomina($anno, $mes, $quincena, $id_serv); ?>
+                                                    <?php } ?>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $valores->getEmpServ($idService, $weekService, $mothService, $yearService, $i); ?>
+                                            </tbody>
+                                        </table>
+                                        <input type="submit" value="enviar">
+                                    </form>
                                 </div>
-                            </form>
+                            </div>   
                         </div>
                     </div>
                 </div>
             </div>
-            <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-            <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-            <!-- Metis Menu Plugin JavaScript -->
-            <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
-            <!-- DataTables JavaScript -->
-            <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-            <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-            <script src="../bower_components/datatables-responsive/js/dataTables.responsive.js"></script>
-            <!-- Custom Theme JavaScript -->
-            <script src="../dist/js/sb-admin-2.js"></script>
-            <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-            <script>
-            $(document).ready(function () {
-                $('#dataTables-example').DataTable({
-                    responsive: true
-                });
-            });
-            </script>
-            <script>
-                $(document).ready(function () {
-                    $('#message-si').fadeOut(4000);
-                });
-            </script>
-            <script>
-                $(document).ready(function () {
-                    $('#message-no').fadeOut(4000);
-                });
-            </script>
 
-    </body>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="../bower_components/datatables-responsive/js/dataTables.responsive.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#message-si').fadeOut(4000);
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#message-no').fadeOut(4000);
+        });
+    </script>
+
+
+
+
+</body>
 
 </html>

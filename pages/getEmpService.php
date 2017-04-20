@@ -117,7 +117,7 @@ var_dump($days);
                                         <a href="panels-wells.php">Ingresa Turnos</a>
                                     </li>
                                     <li>
-                                        <a href="#buttons.html">Consulta Registros</a>
+                                        <a href="#nomina.php">Consulta Registros</a>
                                     </li>
                                     <li>
                                         <a href="#notifications.html">Notifications</a>

@@ -177,7 +177,7 @@ $valores = new Valores();
                                         <a href="panels-wells.php">Ingresa Turnos</a>
                                     </li>
                                     <li>
-                                        <a href="buttons.html">Nomina</a>
+                                        <a href="nomina.php">Nomina</a>
                                     </li>
                                     <!--                                    <li>
                                                                             <a href="#notifications.html">Notifications</a>
@@ -307,7 +307,7 @@ $valores = new Valores();
                                                 <label>Fecha de nacimiento: </label>
                                             </div>
                                             <div class="form-group col-lg-3">
-                                                <input type="text" class="form-control" name="dateEmpNac" id="F_NACIMIENTO" onchange="calculaRFC();" required>
+                                                <input type="text" class="form-control" name="dateEmpNac" id="F_NACIMIENTO" onchange="calculaRFC();" required placeholder="dd-mm-aaaa">
                                             </div>
                                             <div class="col-lg-1">
                                                 <label>Lugar de nacimiento: </label>

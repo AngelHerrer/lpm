@@ -103,7 +103,7 @@ extract($_REQUEST);
                                         <a href="panels-wells.php">Ingresa Turnos</a>
                                     </li>
                                     <li>
-                                        <a href="buttons.html">Nomina</a>
+                                        <a href="nomina.php">Nomina</a>
                                     </li>
                                     <!--                                    <li>
                                                                             <a href="#notifications.html">Notifications</a>

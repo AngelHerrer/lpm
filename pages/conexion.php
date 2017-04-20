@@ -2,7 +2,7 @@
 
 $servidor = "localhost";
 $usuario = "root";
-$password = "";
+$password = "root";
 
     if (!$liga = mysqli_connect($servidor,$usuario,$password)) {
         echo "No se encuentra el Servidor";
@@ -10,7 +10,7 @@ $password = "";
     }
     else {
 
-        if (!mysqli_select_db($liga,"prisma_bd")) {
+        if (!mysqli_select_db($liga,"prisma")) {
             
             echo "No se encuentra la Base de datos";
             
