@@ -19,7 +19,7 @@ include './conexion.php';
     //echo '='.$count;
     if($weekService == 1){
     $j=0;
-    for ($i = 0; $i <= $count; $i++) {
+    for ($i = 0; $i < $count; $i++) {
         
         $contadori =  (15 * $i);
         $contadorj =  (15 * ($i+1))-1;
@@ -73,7 +73,7 @@ include './conexion.php';
 //            
 //         }
          
-        for ($j = $contadori; $j < $contadorj; $j++){
+        for ($j = $contadori; $j <= $contadorj; $j++){
             
             echo $idEmp[$i].'--'.$turno[$j].'---'.$dias[$j].'<br>';
             
