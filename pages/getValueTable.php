@@ -73,7 +73,7 @@ include './conexion.php';
 //            
 //         }
          
-        for ($j = $contadori; $j <= $contadorj; $j++){
+        for ($j = $contadori; $j < $contadorj; $j++){
             
             echo $idEmp[$i].'--'.$turno[$j].'---'.$dias[$j].'<br>';
             
