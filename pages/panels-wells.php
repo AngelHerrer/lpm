@@ -80,14 +80,14 @@ extract($_REQUEST);
                     <div class="sidebar-nav navbar-collapse m-md-t-5">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-Buscar">
-<!--                                <div class="input-group custom-Buscar-form">
-                                    <input type="text" class="form-control" placeholder="Buscar...">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="fa fa-Buscar"></i>
-                                        </button>
-                                    </span>
-                                </div>-->
+                                <!--                                <div class="input-group custom-Buscar-form">
+                                                                    <input type="text" class="form-control" placeholder="Buscar...">
+                                                                    <span class="input-group-btn">
+                                                                        <button class="btn btn-default" type="button">
+                                                                            <i class="fa fa-Buscar"></i>
+                                                                        </button>
+                                                                    </span>
+                                                                </div>-->
                             </li>
                             <li>
                                 <a href="index.php"><i class="glyphicon glyphicon-user fa-fw"></i> Empleados</a>
@@ -243,37 +243,43 @@ extract($_REQUEST);
                                         <input type="text" name="weekService" value="<?php echo $weekService; ?>">
                                         <input type="text" name="idService" value="<?php echo $idService; ?>">
                                         <table id="tabla" width="100%" style="font-size: 10px;"class="table table-striped table-bordered table-hover" >
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Nombre del empleado</th>
-                                                <?php
-                                                if ($weekService == '1') {
-                                                    for ($i = 1; $i < 16; $i++) {
-                                                        echo '<th>' . $i . '</th>';
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nombre del empleado</th>
+                                                    <?php
+                                                    if ($weekService == '1') {
+                                                        for ($i = 1; $i < 16; $i++) {
+                                                            echo '<th>' . $i . '</th>';
+                                                        }
                                                     }
-                                                }
+                                                    ?>
+
+                                                    <?php
+                                                    if (empty($mothService)) {
+                                                        $mothService = '01';
+                                                    }
+                                                    if (empty($yearService)) {
+                                                        $yearService = '2017';
+                                                    }
+                                                    $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
+                                                    if ($weekService == '2') {
+                                                        for ($i = 16; $i <= $days; $i++) {
+                                                            echo '<th>' . $i . '</th>';
+                                                        }
+                                                    }
+                                                    ?>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $valores->getEmpServ($idService, $weekService, $mothService, $yearService, $i)
                                                 ?>
 
-                                                <?php
-                                                $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
-                                                if ($weekService == '2') {
-                                                    for ($i = 16; $i <= $days; $i++) {
-                                                        echo '<th>' . $i . '</th>';
-                                                    }
-                                                }
-                                                ?>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $valores->getEmpServ($idService, $weekService, $mothService, $yearService, $i)
-                                            ?>
-
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
                                         <input type="submit" value="enviar">
-                                        </form>
+                                    </form>
                                 </div>
                             </div>   
                         </div>
@@ -316,9 +322,9 @@ extract($_REQUEST);
             $('#message-no').fadeOut(4000);
         });
     </script>
-    
-    
-    
+
+
+
 
 </body>
 

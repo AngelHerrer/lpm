@@ -255,8 +255,7 @@ class Valores {
         } else {
             $query = "UPDATE `servicios` SET `tel1_ser`=$tel1_ser,`bina_act`=$act_servicio WHERE `id_ser`=$idSer";
         }
-        echo $query;
-        die();
+//        echo $query;
         $result = mysqli_query($liga, $query) or die("<script>window.location.href='addService.php?edit=no';</script>");
         if ($result) {
             echo '<script type="text/javascript">';
