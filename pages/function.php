@@ -196,10 +196,10 @@ class Valores {
 
         include 'conexion.php';
         if(empty($mothService)){
-           $mothService=01;
+           $mothService='01';
         }
         if(empty($yearService)){
-           $yearService=2017;
+           $yearService='2017';
         }
         $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
         $query = "SELECT * FROM emp_prisma where id_ser = $idService";
