@@ -195,6 +195,12 @@ class Valores {
     function getEmpServ($idService, $weekService, $mothService, $yearService, $i) {
 
         include 'conexion.php';
+        if(empty($mothService)){
+           $mothService=00;
+        }
+        if(empty($yearService)){
+           $yearService=2017;
+        }
         $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
         $query = "SELECT * FROM emp_prisma where id_ser = $idService";
         //<td><select name="turno'.'2'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'3'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'4'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'5'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'6'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'7'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'8'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'9'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'10'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'11'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'12'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'13'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'14'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'15'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td></tr>
