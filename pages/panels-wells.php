@@ -238,10 +238,10 @@ extract($_REQUEST);
                                     <div class="col-md-offset-10 col-md-2">
                                     </div>
                                     <form action="getValueTable.php" method="post">
-                                        <input type="text" name="yearService" value="<?php echo $yearService; ?>">
-                                        <input type="text" name="mothService" value="<?php echo $mothService; ?>">
-                                        <input type="text" name="weekService" value="<?php echo $weekService; ?>">
-                                        <input type="text" name="idService" value="<?php echo $idService; ?>">
+                                        <input type="hidden" name="yearService" value="<?php echo $yearService; ?>">
+                                        <input type="hidden" name="mothService" value="<?php echo $mothService; ?>">
+                                        <input type="hidden" name="weekService" value="<?php echo $weekService; ?>">
+                                        <input type="hidden" name="idService" value="<?php echo $idService; ?>">
                                         <table id="tabla" width="100%" style="font-size: 10px;"class="table table-striped table-bordered table-hover" >
                                             <thead>
                                                 <tr>
