@@ -50,6 +50,9 @@ class Valores {
         include 'conexion.php';
         $query = "SELECT * FROM `servicios`";
         $result = mysqli_query($liga, $query);
+        if ($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         while ($row = mysqli_fetch_array($result)) {
             $id_ser = $row['id_ser'];
             $nomb_ser = $row['nomb_ser'];
@@ -73,6 +76,9 @@ class Valores {
         include 'conexion.php';
         $query = "select id_emp,nomb_emp,apat_emp,amat_emp,nomb_ser from empleado_ser";
         $result = mysqli_query($liga, $query);
+        if ($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         while ($row = mysqli_fetch_array($result)) {
             $idEmp = $row['id_emp'];
             $nameEmp = $row['nomb_emp'];
@@ -87,6 +93,9 @@ class Valores {
         include 'conexion.php';
         $query = "SELECT * FROM `servicios` order by nomb_ser asc";
         $result = mysqli_query($liga, $query);
+        if ($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         while ($row = mysqli_fetch_array($result)) {
             $id_ser = $row['id_ser'];
             $nomb_ser = $row['nomb_ser'];
@@ -99,6 +108,9 @@ class Valores {
         include 'conexion.php';
         $query = "select * from `empleado_ser` where id_emp = '$idEmp'";
         $result = mysqli_query($liga, $query);
+        if ($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         while ($row = mysqli_fetch_array($result)) {
             $idEmple = $row['id_emp'];
             $nomEmple = $row['nomb_emp'];
@@ -140,6 +152,9 @@ class Valores {
         include 'conexion.php';
         $query = "SELECT * FROM `estados`";
         $result = mysqli_query($liga, $query);
+        if ($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         while ($row = mysqli_fetch_array($result)) {
             $id_state = $row['id_state'];
             $state = $row['estado'];
@@ -167,6 +182,9 @@ class Valores {
         $opciones = '<option value="0"> Elige un municipio</option>';
         $query = 'select * from prisma.municipios where id_estado =' . $idState;
         $result = mysqli_query($liga, $query);
+        if ($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         while ($row = mysqli_fetch_array($result)) {
             $id_state = $row['id_municipio'];
             $state = $row['nombre_municipio'];
@@ -181,8 +199,9 @@ class Valores {
         $query = "SELECT * FROM emp_prisma where id_ser = $idService";
         //<td><select name="turno'.'2'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'3'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'4'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'5'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'6'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'7'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'8'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'9'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'10'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'11'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'12'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'13'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'14'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td><td><select name="turno'.'15'.$id_emp.$mothService.$yearService.$weekService.'"><option>---</option>'.$this->getTurnos().'</select></td></tr>
         $result = mysqli_query($liga, $query);
-
-
+        if ($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         while ($row = mysqli_fetch_array($result)) {
 
             $id_emp = $row['id_emp'];
@@ -199,6 +218,9 @@ class Valores {
                     $querys = "select id_emp,id_turn,alias_turn,date_turn from tb_asistencias where id_emp=$id_emp and date_turn BETWEEN '$yearService-$mothService-$i' AND '$yearService-$mothService-$i';";
 
                     $results = mysqli_query($liga, $querys);
+                    if ($results === FALSE) {
+                        die(mysql_error()); // TODO: better error handling
+                    }
                     while ($rows = mysqli_fetch_array($results)) {
                         $id_emp = $rows['id_emp'];
                         $id_turn = $rows['id_turn'];
@@ -241,6 +263,9 @@ class Valores {
         include 'conexion.php';
         $query = "SELECT * FROM turnos";
         $result = mysqli_query($liga, $query);
+        if ($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         while ($row = mysqli_fetch_array($result)) {
             $id_turn = $row['id_turn'];
             $alias_turn = $row['alias_turn'];
@@ -259,6 +284,9 @@ class Valores {
         $dated = "$anno-$mes-01";
         $datet = "$anno-$mes-15";
         $result = mysqli_query($liga, "call dynamic_view2('$dated','$datet',$id_serv)");
+        if ($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         if ($quiencena == 1) {
             while ($row = mysqli_fetch_array($result)) {
                 $name = $row['nomb_emp'];
@@ -431,6 +459,9 @@ class Valores {
         $dated = "$anno-$mes-01";
         $datet = "$anno-$mes-15";
         $result = mysqli_query($liga, "call dynamic_view2('$dated','$datet',$id_serv)");
+        if ($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         if ($quiencena == 1) {
             while ($row = mysqli_fetch_array($result)) {
                 $name = $row['nomb_emp'];
