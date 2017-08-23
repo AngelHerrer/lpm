@@ -374,7 +374,7 @@ $valores = new Valores();
                                             </div>
                                             <div class="form-group col-lg-3">
                                                 <select class="form-control" name="state" id="marca" required>
-                                                    <option>-----------------</option>
+                                                    <option>----</option>
                                                     <?php $valores->allState(); ?>
                                                 </select>
 
@@ -384,7 +384,7 @@ $valores = new Valores();
                                             </div>
                                             <div class="form-group col-lg-3" id="result">
                                                 <select class="form-control" name="delegaEmp" id="modelo" required>
-                                                    <option>--------------------</option>
+                                                    <option>---</option>
                                                 </select>
                                             </div>
 
@@ -435,7 +435,7 @@ $valores = new Valores();
                                             </div>
                                             <div class="form-group col-lg-3">
                                                 <select class="form-control" name="genderEmp" required>
-                                                    <option>-----------</option>
+                                                    <option>---</option>
                                                     <option>F</option>
                                                     <option>M</option>
                                                 </select>
@@ -445,7 +445,7 @@ $valores = new Valores();
                                             </div>
                                             <div class="form-group col-lg-3">
                                                 <select class="form-control" name="civilEmp" required>
-                                                    <option>---------------------</option>
+                                                    <option>----</option>
                                                     <option>Soltero / a</option>
                                                     <option>Casado / a</option>
                                                     <option>Viudo / a</option>
@@ -457,7 +457,7 @@ $valores = new Valores();
                                             </div>
                                             <div class="form-group col-lg-3">
                                                 <select class="form-control" name="schoolEmp" required>
-                                                    <option>-----------------</option>
+                                                    <option>---</option>
                                                     <option>Primaria</option>
                                                     <option>Secundaria</option>
                                                     <option>Preparatoria o bachillerato</option>
@@ -534,7 +534,7 @@ $valores = new Valores();
                                                     <label>No. de Seguro Social: </label>
                                                 </div>
                                                 <div class="form-group col-lg-3">
-                                                    <input type="text" class="form-control" name="socialNum" required/>
+                                                    <input type="text" class="form-control" name="socialNum" required value="0"/>
                                                 </div>
                                             </div>
                                             <div hidden id="divInf">
@@ -542,7 +542,7 @@ $valores = new Valores();
                                                     <label>No. de INFONAVIT: </label>
                                                 </div>
                                                 <div class="form-group col-lg-3">
-                                                    <input type="text" class="form-control" name="infonaNum" required/>
+                                                    <input type="text" class="form-control" name="infonaNum" required value="0"/>
                                                 </div>
                                             </div>
 
@@ -551,19 +551,14 @@ $valores = new Valores();
                                                     <label >No. de cuenta bancaria: </label>
                                                 </div>
                                                 <div class="form-group col-lg-3">
-                                                    <input type="text" class="form-control" name="cbNum" required/>
+                                                    <input type="text" class="form-control" name="cbNum" required value="0"/>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- /.col-lg-6 (nested) -->
                                     </div>
-                                    <!-- /.row (nested) -->
                                 </div>
-                                <!-- /.panel-body -->
                             </div>
-                            <!-- /.panel -->
                         </div>
-                        <!-- /.col-lg-12 -->
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -571,12 +566,8 @@ $valores = new Valores();
                                 <div class="panel-heading">
                                     Datos laborales del empleado
                                 </div>
-
                                 <div class="panel-body">
-
                                     <div class="row">
-
-                                        <!-- /.col-lg-6 (nested) -->
                                         <div class="col-lg-12">
                                             <div class="col-lg-1">
                                                 <label >Servicio: </label>
@@ -593,42 +584,27 @@ $valores = new Valores();
                                             <div class="form-group col-lg-3">
                                                 <input type="date" class="form-control" name="dateIng">
                                             </div>
+
+                                            <div class="col-lg-1">
+                                                <label>Contrato:</label>
+                                            </div>
+                                            <div class="form-group col-lg-3">
+                                                SI <input type="radio" value="yes"  name="contrato">
+                                                NO <input type="radio" value="no"  name="contrato">
+                                            </div>
+
                                         </div>
-                                        <!-- /.col-lg-6 (nested) -->
                                     </div>
-                                    <!--                                    <div class="row separetorTopInput">
-                                                                             /.col-lg-6 (nested) 
-                                                                            <div class="col-lg-12">
-                                                                            </div>
-                                                                             /.col-lg-6 (nested) 
-                                                                        </div>-->
-
-
-                                    <!-- /.row (nested) -->
-
                                 </div>
-
-                                <!-- /.panel-body -->
-
                             </div>
-                            <!-- /.panel -->
                         </div>
-                        <!-- /.col-lg-12 -->
                     </div>
                     <hr>
                     <input type="submit" class="btn btn-default" value="Guardar">
                     <hr>
-
-                    <!-- /.row -->
-                    </div>
                 </form>
-                <!-- /#page-wrapper -->
-
             </div>
         </div>
-        <!-- /#wrapper -->
-
-        <!-- jQuery -->
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
         <!-- Bootstrap Core JavaScript -->

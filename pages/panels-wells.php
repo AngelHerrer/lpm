@@ -171,8 +171,8 @@ extract($_REQUEST);
             </nav>
             <!--CONTENIDO-->
             <div id="page-wrapper">
-                <div class="row">
-                    <form action="panels-wells.php" method="post" class="form-inline">
+                <form action="panels-wells.php" method="post" class="form-inline">
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="col-lg-12">
                                 <h2 class="page-header ">Turnos</h2>
@@ -224,7 +224,7 @@ extract($_REQUEST);
                                 <button type="submit" class="btn btn-primary m-md-t-2">Aceptar</button>
                             </div>
                         </div>
-                </div>
+                    </div>
                 </form>
 
                 <div class="row">

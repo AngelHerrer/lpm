@@ -24,7 +24,7 @@ class Valores {
     function saveEmployee($nameEmp, $patEmp, $matEmp, $rfcEmp, $dateEmpNac, $placeEmp, $avenEmp, $colonyEmp, $postalEmp, $state, $delegaEmp, $phoneOne, $phoneTwo, $genderEmp, $civilEmp, $schoolEmp, $chilEmp, $socialEmp, $socialNum, $referEmp, $servEmp, $dateIng, $cbEmp, $cbNum, $infonaEmp, $infonaNum) {
         include 'conexion.php';
         $id_auto = $this->max_id($liga, 'emp_prisma', 'id_emp');
-        $query = "INSERT INTO emp_prisma VALUES ('$id_auto','$nameEmp','$patEmp','$matEmp','$rfcEmp','$dateEmpNac','$placeEmp','$avenEmp','$colonyEmp','$postalEmp','$state','$delegaEmp','$phoneOne','$phoneTwo','$genderEmp','$civilEmp','$schoolEmp','$chilEmp','$socialEmp','$socialNum','$referEmp','1','$servEmp','$dateIng','1','$cbEmp','$cbNum','$infonaEmp','$infonaNum')";
+        $query = "INSERT INTO emp_prisma VALUES ('$id_auto','$nameEmp','$patEmp','$matEmp','$rfcEmp','$dateEmpNac','$placeEmp','$avenEmp','$colonyEmp','$postalEmp','$state','$delegaEmp','$phoneOne','$phoneTwo','$genderEmp','$civilEmp','$schoolEmp','$chilEmp','$socialEmp','$socialNum','$referEmp','1','$servEmp','$dateIng','1','$cbEmp','$cbNum','$infonaEmp','$infonaNum','1')";
         echo $query;
         $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
     }
@@ -68,7 +68,7 @@ class Valores {
             } else {
                 $inp = $tel1_ser;
             }
-            echo '<tr><td>' . $id_ser . '</td><td>' . $nomb_ser . '</td><td>' . $zona_ser . '</td><td>' . $inp . '<input type="text" value="' . $id_ser . '" name="id_ser"></td><td><select name="act_servicio"><option selected>' . $bina_act . '</option><option value="' . $x . '">' . $x . '</option></select></td><td><button type="submit" class="btn btn-primary">Guardar</button></td></tr>';
+            echo '<tr><td>' . $id_ser . '</td><td>' . $nomb_ser . '</td><td>' . $zona_ser . '</td><td>' . $inp . '<input type="hidden" value="' . $id_ser . '" name="id_ser"></td><td><select name="act_servicio"><option selected>' . $bina_act . '</option><option value="' . $x . '">' . $x . '</option></select></td><td><button type="submit" class="btn btn-primary">Guardar</button></td></tr>';
         }
     }
 
@@ -89,7 +89,7 @@ class Valores {
         }
     }
 
-    function getServices() {
+    function getServices($serviceEmple) {
         include 'conexion.php';
         $query = "SELECT * FROM `servicios` order by nomb_ser asc";
         $result = mysqli_query($liga, $query);
@@ -100,7 +100,11 @@ class Valores {
             $id_ser = $row['id_ser'];
             $nomb_ser = $row['nomb_ser'];
             //$bina_act = $row['act_servicio'];
-            echo '<option value="' . $id_ser . '">' . $nomb_ser . '</option>';
+            if ($serviceEmple == $nomb_ser) {
+                echo '<option selected value="' . $id_ser . '">' . $nomb_ser . '</option>';
+            } else {
+                echo '<option value="' . $id_ser . '">' . $nomb_ser . '</option>';
+            }
         }
     }
 
@@ -162,7 +166,7 @@ class Valores {
         }
     }
 
-    function updateEmple($idEmp, $nomEmple, $apPatEmple, $apMatEmple, $rfcEmple, $dateNacEmple, $placeBirEmple, $avEmple, $colonyEmple, $cpEmple, $delEmple, $stateEmple, $phoneEmple, $phoneTwoEmple, $genderEmple, $civilEmple, $schoEmple, $chilEmple, $referEmple, $socialEmple, $socSecuEmple, $turnEmple, $serviceEmple, $dateAdmEmple, $lockedEmple, $bankEmple, $infonaEmple) {
+    function updateEmple($idEmp, $nomEmple, $apPatEmple, $apMatEmple, $rfcEmple, $dateNacEmple, $placeBirEmple, $avEmple, $colonyEmple, $cpEmple, $delEmple, $stateEmple, $phoneEmple, $phoneTwoEmple, $genderEmple, $civilEmple, $schoEmple, $chilEmple, $referEmple, $socialEmple, $socSecuEmple, $turnEmple, $servEmp, $dateAdmEmple, $lockedEmple, $bankEmple, $infonaEmple) {
         include 'conexion.php';
         $query = "UPDATE `emp_prisma` SET `nomb_emp`='$nomEmple',`apat_emp`='$apPatEmple',"
                 . "`amat_emp`='$apMatEmple',`refc_emp`='$rfcEmple',`fhna_emp`='$dateNacEmple',`id_stateN`='$placeBirEmple',"
@@ -170,10 +174,11 @@ class Valores {
                 . "`id_municipio`='$delEmple',`id_state`='$stateEmple',`tel1_emp`='$phoneEmple',`tel2_emp`='$phoneTwoEmple',"
                 . "`gene_emp`='$genderEmple',`eciv_emp`='$civilEmple',`esco_emp`='$schoEmple',"
                 . "`nuhi_emp`='$chilEmple',`dref_emp`='$referEmple',"
-                . "`sectso_emp`='$socSecuEmple',`id_ser`='$serviceEmple',"
+                . "`sectso_emp`='$socSecuEmple',`id_ser`='$servEmp',"
                 . "`fhin_emp`='$dateAdmEmple',`bina_blo`='$lockedEmple',`ncuen_emp`='$bankEmple', `ninfonavi_emp`='$infonaEmple' WHERE `id_emp`=$idEmp";
 
         echo $query;
+//        die();
         $result = mysqli_query($liga, $query) or die("<script>window.location.href='index.php?edit=no';</script>");
     }
 
@@ -195,11 +200,11 @@ class Valores {
     function getEmpServ($idService, $weekService, $mothService, $yearService, $i) {
 
         include 'conexion.php';
-        if(empty($mothService)){
-           $mothService='01';
+        if (empty($mothService)) {
+            $mothService = '01';
         }
-        if(empty($yearService)){
-           $yearService='2017';
+        if (empty($yearService)) {
+            $yearService = '2017';
         }
         $days = cal_days_in_month(CAL_GREGORIAN, $mothService, $yearService);
         $query = "SELECT * FROM emp_prisma where id_ser = $idService";
@@ -407,9 +412,9 @@ class Valores {
                     $sueldo = $sueldo - 250;
                 }
                 if ($dia1 == 'F' or $dia1 == 'F/J' or $dia2 == 'F' or $dia2 == 'F/J' or$dia3 == 'F' or $dia3 == 'F/J' or$dia4 == 'F' or $dia4 == 'F/J' or$dia5 == 'F' or $dia5 == 'F/J' or$dia6 == 'F' or $dia6 == 'F/J' or$dia7 == 'F' or $dia7 == 'F/J' or$dia8 == 'F' or $dia8 == 'F/J' or$dia9 == 'F' or $dia9 == 'F/J' or$dia10 == 'F' or $dia10 == 'F/J' or$dia11 == 'F' or $dia11 == 'F/J' or$dia12 == 'F' or $dia12 == 'F/J' or$dia13 == 'F' or $dia13 == 'F/J' or$dia14 == 'F' or $dia14 == 'F/J' or$dia15 == 'F' or $dia15 == 'F/J') {
-                    $sueldo = $sueldo - 250;
+                    $sueldo = $sueldo - 150;
                 }
-                echo '<td>' . $name . ' ' . $apat . '</td></td><td>' . $dia1 . '</td><td>' . $dia2 . '</td><td>' . $dia3 . '</td><td>' . $dia4 . '</td><td>' . $dia5 . '</td><td>' . $dia6 . '</td><td>' . $dia7 . '</td><td>' . $dia8 . '</td><td>' . $dia9 . '</td><td>' . $dia10 . '</td><td>' . $dia11 . '</td><td>' . $dia12 . '</td><td>' . $dia13 . '</td><td>' . $dia14 . '</td><td>' . $dia15 . '</td><td><input type="num"></td><td><label>$' . $sueldo . '</label>';
+                echo '<td>' . $name . ' ' . $apat . '</td></td><td>' . $dia1 . '</td><td>' . $dia2 . '</td><td>' . $dia3 . '</td><td>' . $dia4 . '</td><td>' . $dia5 . '</td><td>' . $dia6 . '</td><td>' . $dia7 . '</td><td>' . $dia8 . '</td><td>' . $dia9 . '</td><td>' . $dia10 . '</td><td>' . $dia11 . '</td><td>' . $dia12 . '</td><td>' . $dia13 . '</td><td>' . $dia14 . '</td><td>' . $dia15 . '</td><td><input type="num"></td><td><label>$' . $sueldo . '</label></td>';
 
                 echo '<input type="hidden" value="' . $sueldo . '" name="sueldo[]">'
                 . '<input type="hidden" value="' . $dia1 . '" name="dia1[]">'

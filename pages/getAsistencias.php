@@ -3,9 +3,9 @@ error_reporting(E_ALL ^ E_NOTICE);
 include 'function.php';
 $valores = new Valores();
 
-$mes = 03;
-$quincena = 1;
-$id_ser = 2;
+//$mes = 03;
+//$quincena = 1;
+//$id_ser = 2;
 $valores->nomina($mes, $quincena, $id_ser);
 ?>
 <!DOCTYPE html>

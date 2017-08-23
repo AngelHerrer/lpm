@@ -4,51 +4,26 @@ include 'function.php';
 $valores = new Valores();
 
 extract($_REQUEST);
-//$mes = '03';
-//$quincena = 1;
-//$id_serv = 2;
-//$anno = 2017;
+$quincena1 = $quincena;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-
         <title>Limpieza Prisma</title>
-
-        <!-- Bootstrap Core CSS -->
         <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- MetisMenu CSS -->
         <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-        <!-- Custom CSS -->
         <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
         <link href="../dist/css/base.css" rel="stylesheet">
-
-        <!-- Custom Fonts -->
         <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
     </head>
-
     <body>
-
         <div id="wrapper">
-
-            <!-- Navigation -->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -59,8 +34,6 @@ extract($_REQUEST);
                     </button>
                     <a class="navbar-brand" href="index.php">Limpieza Prisma</a>
                 </div>
-                <!-- /.navbar-header -->
-
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -75,12 +48,8 @@ extract($_REQUEST);
                             <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-user -->
                     </li>
-                    <!-- /.dropdown -->
                 </ul>
-                <!-- /.navbar-top-links -->
-
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse m-md-t-5">
                         <ul class="nav" id="side-menu">
@@ -100,7 +69,6 @@ extract($_REQUEST);
                             <li>
                                 <a href="addEmp.php"><i class="glyphicon glyphicon-upload fa-fw"></i> Dar de alta empleado</a>
                             </li>
-
                             <li>
                                 <a href="#"><i class="glyphicon glyphicon-file fa-fw"></i>Registra Empleados<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -110,20 +78,7 @@ extract($_REQUEST);
                                     <li>
                                         <a href="nomina.php">Nomina</a>
                                     </li>
-                                    <!--                                    <li>
-                                                                            <a href="#notifications.html">Notifications</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#typography.html">Typography</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#icons.html"> Icons</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#grid.html">Grid</a>
-                                                                        </li>-->
                                 </ul>
-                                <!-- /.nav-second-level -->
                             </li>
                             <li>
                                 <a href="#"><i class="glyphicon glyphicon-wrench fa-fw"></i>Servicios<span class="fa arrow"></span></a>
@@ -134,42 +89,8 @@ extract($_REQUEST);
                                     <li>
                                         <a href="#">Provedores</a>
                                     </li>
-                                    <!--                                    <li>
-                                                                            <a href="#">Third Level <span class="fa arrow"></span></a>
-                                                                            <ul class="nav nav-third-level">
-                                                                                <li>
-                                                                                    <a href="#">Third Level Item</a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="#">Third Level Item</a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="#">Third Level Item</a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="#">Third Level Item</a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </li>-->
                                 </ul>
                             </li>
-                            <!--                            <li>
-                                                            <a href="#tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                                                        </li>-->
-                            <!--                            <li>
-                                                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                                                            <ul class="nav nav-second-level">
-                                                                <li>
-                                                                    <a href="#blank.html">Blank Page</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#login.html">Login Page</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>-->
                         </ul>
                     </div>
                 </div>
@@ -177,7 +98,7 @@ extract($_REQUEST);
             <!--CONTENIDO-->
             <div id="page-wrapper">
                 <div class="row">
-                    <form action="nomina.php" method="post" class="form-inline">
+                    <form action="nomina.php" method="get" class="form-inline">
                         <div class="col-md-12">
                             <div class="col-lg-12">
                                 <h2 class="page-header ">Turnos</h2>
@@ -241,7 +162,6 @@ extract($_REQUEST);
                     </form>
                 </div>
 
-
                 <div class="row">
                     <div class="col-lg-12 m-md-t-2">
                         <div class="panel panel-default">
@@ -256,10 +176,10 @@ extract($_REQUEST);
                                         <table width="100%" class="table table-striped table-bordered table-hover table-responsive" id="dataTablesexample">
                                             <thead>
                                                 <tr>
-
                                                     <?php if ($quincena == '1') { ?>
+
                                                         <th>Nombre</th><th>D1</th><th>D2</th><th>D3</th><th>D4</th><th>D5</th><th>D6</th><th>D7</th><th>D8</th><th>D9</th><th>D10</th><th>D11</th><th>D12</th><th>D13</th><th>D14</th><th>D15</th><th>Extras</th><th>Total</th>
-                                                        <?php $valores->nomina($anno, $mes, $quincena, $id_serv); ?>
+                                                        <?php list($test) = $valores->nomina($anno, $mes, $quincena, $id_serv); ?>
                                                     <?php } ?>
                                                     <?php if ($quincena == '2') { ?>
                                                         <th>Nombre</th><th>D16</th><th>D17</th><th>D18</th><th>D19</th><th>D20</th><th>D21</th><th>D22</th><th>D23</th><th>D24</th><th>D25</th><th>D26</th><th>D27</th><th>D28</th><th>D29</th><th>D30</th><th>D31</th><th>Extras</th><th>Total</th>
@@ -268,7 +188,7 @@ extract($_REQUEST);
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php $valores->getEmpServ($idService, $weekService, $mothService, $yearService, $i); ?>
+                                                <?php // $valores->getEmpServ($id_serv, $quincena1, $mes, $anno, $i); ?>
                                             </tbody>
                                         </table>
                                         <input type="submit" value="enviar">

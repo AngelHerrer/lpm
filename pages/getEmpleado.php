@@ -394,12 +394,19 @@ $nomCom = $nomEmple.' '.$apPatEmple.' '.$apMatEmple;
                                             </select>
                                             
                                         </div>
+                                    
                                     <div class="col-lg-2">
                                         <label>Servicio: </label>
                                         </div>
+                                    
                                         <div class="form-group col-lg-4">
-                                            <input type="text" class="form-control" name="serviceEmple" value="<?php echo $serviceEmple; ?>">
+                                            <select class="form-control" name="servEmp">
+                                                    <option value="0">---</option>
+                                                    <?php $valores->getServices($serviceEmple); ?> 
+                                                </select>
+                                            <!--<input type="text" class="form-control" name="serviceEmple" value="<?php // echo $serviceEmple; ?>">-->
                                         </div>
+                                    
                                     
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
