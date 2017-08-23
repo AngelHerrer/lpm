@@ -185,7 +185,7 @@ class Valores {
     function getMuni($idState) {
         include 'conexion.php';
         $opciones = '<option value="0"> Elige un municipio</option>';
-        $query = 'select * from prisma.municipios where id_estado =' . $idState;
+        $query = 'select * from municipios where id_estado =' . $idState;
         $result = mysqli_query($liga, $query);
         if ($result === FALSE) {
             die(mysql_error()); // TODO: better error handling
