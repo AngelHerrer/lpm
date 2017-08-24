@@ -297,9 +297,9 @@ class Valores {
         if ($result === FALSE) {
             die(mysql_error()); // TODO: better error handling
         }
-        var_dump($result);
         if ($quiencena == 1) {
             while ($row = mysqli_fetch_array($result)) {
+                var_dump($row);
                 $name = $row['nomb_emp'];
                 $apat = $row['apat_emp'];
                 $amat = $row['amat_emp'];
