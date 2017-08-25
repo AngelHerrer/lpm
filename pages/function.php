@@ -295,15 +295,16 @@ class Valores {
 
     function nomina($anno, $mes, $quiencena, $id_serv) {
         include 'conexion.php';
-        $dated = "$anno-$mes-01";
-        $datet = "$anno-$mes-15";
-        $result = mysqli_query($liga, "call dynamic_view2('$dated','$datet',$id_serv)");
-        if ($result === FALSE) {
 
-            echo mysqli_errno($liga) . ": " . mysqli_error($liga) . "\n";
-            die(mysqli_error()); // TODO: better error handling
-        }
         if ($quiencena == 1) {
+            $dated = "$anno-$mes-01";
+            $datet = "$anno-$mes-15";
+            $result = mysqli_query($liga, "call dynamic_view2('$dated','$datet',$id_serv)");
+            if ($result === FALSE) {
+
+                echo mysqli_errno($liga) . ": " . mysqli_error($liga) . "\n";
+                die(mysqli_error()); // TODO: better error handling
+            }
             while ($row = mysqli_fetch_array($result)) {
                 $name = $row['nomb_emp'];
                 $apat = $row['apat_emp'];
@@ -420,7 +421,7 @@ class Valores {
                 if ($dia1 == 'F' or $dia1 == 'F/J' or $dia2 == 'F' or $dia2 == 'F/J' or$dia3 == 'F' or $dia3 == 'F/J' or$dia4 == 'F' or $dia4 == 'F/J' or$dia5 == 'F' or $dia5 == 'F/J' or$dia6 == 'F' or $dia6 == 'F/J' or$dia7 == 'F' or $dia7 == 'F/J' or$dia8 == 'F' or $dia8 == 'F/J' or$dia9 == 'F' or $dia9 == 'F/J' or$dia10 == 'F' or $dia10 == 'F/J' or$dia11 == 'F' or $dia11 == 'F/J' or$dia12 == 'F' or $dia12 == 'F/J' or$dia13 == 'F' or $dia13 == 'F/J' or$dia14 == 'F' or $dia14 == 'F/J' or$dia15 == 'F' or $dia15 == 'F/J') {
                     $sueldo = $sueldo - 150;
                 }
-                echo '<td>' . $name . ' ' . $apat . '</td></td><td>' . $dia1 . '</td><td>' . $dia2 . '</td><td>' . $dia3 . '</td><td>' . $dia4 . '</td><td>' . $dia5 . '</td><td>' . $dia6 . '</td><td>' . $dia7 . '</td><td>' . $dia8 . '</td><td>' . $dia9 . '</td><td>' . $dia10 . '</td><td>' . $dia11 . '</td><td>' . $dia12 . '</td><td>' . $dia13 . '</td><td>' . $dia14 . '</td><td>' . $dia15 . '</td><td><input type="num" id="'.$name,$apat.'"></td><td><label>$' . $sueldo . '</label></td>';
+                echo '<td>' . $name . ' ' . $apat . '</td></td><td>' . $dia1 . '</td><td>' . $dia2 . '</td><td>' . $dia3 . '</td><td>' . $dia4 . '</td><td>' . $dia5 . '</td><td>' . $dia6 . '</td><td>' . $dia7 . '</td><td>' . $dia8 . '</td><td>' . $dia9 . '</td><td>' . $dia10 . '</td><td>' . $dia11 . '</td><td>' . $dia12 . '</td><td>' . $dia13 . '</td><td>' . $dia14 . '</td><td>' . $dia15 . '</td><td><input type="num" id="' . $name, $apat . '"></td><td><label>$' . $sueldo . '</label></td>';
 
                 echo '<input type="hidden" value="' . $sueldo . '" name="sueldo[]">'
                 . '<input type="hidden" value="' . $dia1 . '" name="dia1[]">'
@@ -446,26 +447,34 @@ class Valores {
         } elseif ($quiencena == 2) {
             $dated = "$anno-$mes-15";
             $datet = "$anno-$mes-31";
+            $result = mysqli_query($liga, "call dynamic_view2('$dated','$datet',$id_serv)");
+            if ($result === FALSE) {
+
+                echo mysqli_errno($liga) . ": " . mysqli_error($liga) . "\n";
+                die(mysqli_error()); // TODO: better error handling
+            }
             while ($row = mysqli_fetch_array($result)) {
                 $name = $row['nomb_emp'];
+                $apat = $row['apat_emp'];
                 $sueldo = $row['cat_sueld'];
-                $dia17 = $row['17'];
-                $dia18 = $row['18'];
-                $dia19 = $row['19'];
-                $dia20 = $row['20'];
-                $dia21 = $row['21'];
-                $dia22 = $row['22'];
-                $dia23 = $row['23'];
-                $dia24 = $row['24'];
-                $dia25 = $row['25'];
-                $dia26 = $row['26'];
-                $dia27 = $row['27'];
-                $dia28 = $row['28'];
-                $dia29 = $row['29'];
-                $dia30 = $row['30'];
-                $dia31 = $row['31'];
+                $dia16 = $row['4'];
+                $dia17 = $row['5'];
+                $dia18 = $row['6'];
+                $dia19 = $row['7'];
+                $dia20 = $row['8'];
+                $dia21 = $row['9'];
+                $dia22 = $row['10'];
+                $dia23 = $row['11'];
+                $dia24 = $row['12'];
+                $dia25 = $row['13'];
+                $dia26 = $row['14'];
+                $dia27 = $row['15'];
+                $dia28 = $row['16'];
+                $dia29 = $row['17'];
+                $dia30 = $row['18'];
+                $dia31 = $row['19'];
                 echo
-                '<tr><td>' . $name . '</td><td>' . $sueldo . '</td><td>' . $dia16 . '</td><td>' . $dia17 . '</td><td>' . $dia18 . '</td><td>' . $dia19 . '</td><td>' . $dia20 . '</td><td>' . $dia21 . '</td><td>' . $dia22 . '</td><td>' . $dia23 . '</td><td>' . $dia24 . '</td><td>' . $dia25 . '</td><td>' . $dia26 . '</td><td>' . $dia27 . '</td><td>' . $dia28 . '</td><td>' . $dia29 . '</td><td>' . $dia30 . '</td><td>' . $dia31 . '</td><td><input type="num"></td><td><label>$000,00</label></td></tr>';
+                '<tr><td>' . $name .' '.$apat.'</td><td>' . $dia16 . '</td><td>' . $dia17 . '</td><td>' . $dia18 . '</td><td>' . $dia19 . '</td><td>' . $dia20 . '</td><td>' . $dia21 . '</td><td>' . $dia22 . '</td><td>' . $dia23 . '</td><td>' . $dia24 . '</td><td>' . $dia25 . '</td><td>' . $dia26 . '</td><td>' . $dia27 . '</td><td>' . $dia28 . '</td><td>' . $dia29 . '</td><td>' . $dia30 . '</td><td>' . $dia31 . '</td><td><input type="num"></td><td><label>$'.$sueldo.'</label></td></tr>';
             }
         }
     }
