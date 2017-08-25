@@ -101,7 +101,7 @@ $quincena1 = $quincena;
                     <form action="nomina.php" method="get" class="form-inline">
                         <div class="col-md-12">
                             <div class="col-lg-12">
-                                <h2 class="page-header ">Turnos</h2>
+                                <h2 class="page-header ">Nomina</h2>
                             </div>
                         </div>
                         <div class="col-md-12">
