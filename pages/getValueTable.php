@@ -32,8 +32,11 @@ if ($weekService == 1) {
             if ($turno[$j] == 0) {
                 $turno[$j] = "null";
             }
+            
+               echo $j;
             if($j < 32){
             $query = "insert into asistencias (id_emp,id_ser,id_turn,date_turn,comentarios) values ($idEmp[$i],$idService,$turno[$j],'$yearService-$mothService-$dias[$j]',null); ";
+            echo $query .'<br>';
             $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
             }
             
