@@ -5,7 +5,6 @@ $valores = new Valores();
 
 extract($_REQUEST);
 $quincena1 = $quincena;
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -178,17 +177,17 @@ $quincena1 = $quincena;
                                                 <tr>
                                                     <?php if ($quincena == '1') { ?>
 
-                                                        <th>Nombre</th><th>D1</th><th>D2</th><th>D3</th><th>D4</th><th>D5</th><th>D6</th><th>D7</th><th>D8</th><th>D9</th><th>D10</th><th>D11</th><th>D12</th><th>D13</th><th>D14</th><th>D15</th><th>Extras</th><th>Total</th>
+                                                        <th>Nombre</th><th>D1</th><th>D2</th><th>D3</th><th>D4</th><th>D5</th><th>D6</th><th>D7</th><th>D8</th><th>D9</th><th>D10</th><th>D11</th><th>D12</th><th>D13</th><th>D14</th><th>D15</th><th>Otros</th><th>Total</th>
                                                         <?php list($test) = $valores->nomina($anno, $mes, $quincena, $id_serv); ?>
                                                     <?php } ?>
                                                     <?php if ($quincena == '2') { ?>
-                                                        <th>Nombre</th><th>D16</th><th>D17</th><th>D18</th><th>D19</th><th>D20</th><th>D21</th><th>D22</th><th>D23</th><th>D24</th><th>D25</th><th>D26</th><th>D27</th><th>D28</th><th>D29</th><th>D30</th><th>D31</th><th>Extras</th><th>Total</th>
+                                                        <th>Nombre</th><th>D16</th><th>D17</th><th>D18</th><th>D19</th><th>D20</th><th>D21</th><th>D22</th><th>D23</th><th>D24</th><th>D25</th><th>D26</th><th>D27</th><th>D28</th><th>D29</th><th>D30</th><th>D31</th><th>Otros</th><th>Total</th>
                                                         <?php $valores->nomina($anno, $mes, $quincena, $id_serv); ?>
                                                     <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php // $valores->getEmpServ($id_serv, $quincena1, $mes, $anno, $i); ?>
+                                                <?php // $valores->getEmpServ($id_serv, $quincena1, $mes, $anno, $i);  ?>
                                             </tbody>
                                         </table>
                                         <input type="submit" value="enviar">
@@ -235,10 +234,19 @@ $quincena1 = $quincena;
             $('#message-no').fadeOut(4000);
         });
     </script>
-
-
-
-
+    <script>
+        
+        var IDs = [];
+        var x =0;
+        $("#dataTablesexample").find("input[type=num]").each(function(){ IDs.push(this.id); });
+        for(var i in IDs){
+             $("#"+IDs[i]).keyup(function () {
+             console.log($("#"+IDs[i]).val());     
+        });
+        }
+       
+       
+    </script>
 </body>
 
 </html>

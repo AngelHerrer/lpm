@@ -8,6 +8,7 @@ list ($idEmple,$nomEmple,$apPatEmple,$apMatEmple,$rfcEmple,$dateNacEmple,
         $placeBirEmple,$avEmple,$colonyEmple,$cpEmple,$delEmple,$stateEmple,$phoneEmple,$phoneTwoEmple,
         $genderEmple,$civilEmple,$schoEmple,$chilEmple,$referEmple,$socialEmple,$socSecuEmple,
         $turnEmple,$serviceEmple,$dateAdmEmple,$lockedEmple,$bankEmple)=$valores->getEmp($idEmp);
+
 $nomCom = $nomEmple.' '.$apPatEmple.' '.$apMatEmple; 
 
 ?>
@@ -53,6 +54,10 @@ $nomCom = $nomEmple.' '.$apPatEmple.' '.$apMatEmple;
             <a  class="close" href="index.php">×</a>
             <h4 class="modal-title" >Editar al empleado:<p style="color: cadetblue;"> <?php echo $nomCom; ?></p></h4>
         </div>
+          <?php echo $idEmple.'<br>'.$nomEmple.'<br>'.$apPatEmple.'<br>'.$apMatEmple.'<br>'.$rfcEmple.'<br>'.$dateNacEmple,
+        $placeBirEmple.'<br>'.$avEmple.'<br>'.$colonyEmple.'<br>'.$cpEmple.'<br>'.$delEmple.'<br>'.$stateEmple.'<br>'.$phoneEmple.'<br>'.$phoneTwoEmple.'<br>'.
+        $genderEmple.'<br>'.$civilEmple.'<br>'.$schoEmple.'<br>'.$chilEmple.'<br>'.$referEmple.'<br>'.$socialEmple.'<br>'.$socSecuEmple.'<br>'.
+        $turnEmple.'<br>'.$serviceEmple.'<br>'.$dateAdmEmple.'<br>'.$lockedEmple.'<br>'.$bankEmple; ?>
         <div class="modal-body">
            
               <div class="row">
@@ -126,8 +131,7 @@ $nomCom = $nomEmple.' '.$apPatEmple.' '.$apMatEmple;
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <select class="form-control" name="placeEmp" >
-                                                <option><?php echo $placeBirEmple; ?></option>
-                                                <?php $valores->allState(); ?>
+                                                <?php $valores->allState($placeBirEmple); ?>
                                             </select>
                                             
                                         </div>
@@ -203,8 +207,7 @@ $nomCom = $nomEmple.' '.$apPatEmple.' '.$apMatEmple;
                                     </div>
                                         <div class="form-group col-lg-4">
                                             <select class="form-control" name="state">
-                                                <option><?php echo $stateEmple; ?></option>
-                                                <?php $valores->allState(); ?>
+                                                <?php $valores->allState($stateEmple); ?>
                                             </select>
                                         </div>
                                     <div class="col-lg-2">

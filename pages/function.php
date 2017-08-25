@@ -152,7 +152,7 @@ class Valores {
         }
     }
 
-    function allState() {
+    function allState($placeBirEmple) {
         include 'conexion.php';
         $query = "SELECT * FROM `estados`";
         $result = mysqli_query($liga, $query);
@@ -162,7 +162,11 @@ class Valores {
         while ($row = mysqli_fetch_array($result)) {
             $id_state = $row['id_state'];
             $state = $row['estado'];
-            echo '<option value="' . $id_state . '">' . $state . '</option>';
+            if ($placeBirEmple == $id_state) {
+                echo '<option selected value="' . $id_state . '">' . $state . '</option>';
+            } else {
+                echo '<option value="' . $id_state . '">' . $state . '</option>';
+            }
         }
     }
 
@@ -295,7 +299,7 @@ class Valores {
         $datet = "$anno-$mes-15";
         $result = mysqli_query($liga, "call dynamic_view2('$dated','$datet',$id_serv)");
         if ($result === FALSE) {
-            
+
             echo mysqli_errno($liga) . ": " . mysqli_error($liga) . "\n";
             die(mysqli_error()); // TODO: better error handling
         }
@@ -416,7 +420,7 @@ class Valores {
                 if ($dia1 == 'F' or $dia1 == 'F/J' or $dia2 == 'F' or $dia2 == 'F/J' or$dia3 == 'F' or $dia3 == 'F/J' or$dia4 == 'F' or $dia4 == 'F/J' or$dia5 == 'F' or $dia5 == 'F/J' or$dia6 == 'F' or $dia6 == 'F/J' or$dia7 == 'F' or $dia7 == 'F/J' or$dia8 == 'F' or $dia8 == 'F/J' or$dia9 == 'F' or $dia9 == 'F/J' or$dia10 == 'F' or $dia10 == 'F/J' or$dia11 == 'F' or $dia11 == 'F/J' or$dia12 == 'F' or $dia12 == 'F/J' or$dia13 == 'F' or $dia13 == 'F/J' or$dia14 == 'F' or $dia14 == 'F/J' or$dia15 == 'F' or $dia15 == 'F/J') {
                     $sueldo = $sueldo - 150;
                 }
-                echo '<td>' . $name . ' ' . $apat . '</td></td><td>' . $dia1 . '</td><td>' . $dia2 . '</td><td>' . $dia3 . '</td><td>' . $dia4 . '</td><td>' . $dia5 . '</td><td>' . $dia6 . '</td><td>' . $dia7 . '</td><td>' . $dia8 . '</td><td>' . $dia9 . '</td><td>' . $dia10 . '</td><td>' . $dia11 . '</td><td>' . $dia12 . '</td><td>' . $dia13 . '</td><td>' . $dia14 . '</td><td>' . $dia15 . '</td><td><input type="num"></td><td><label>$' . $sueldo . '</label></td>';
+                echo '<td>' . $name . ' ' . $apat . '</td></td><td>' . $dia1 . '</td><td>' . $dia2 . '</td><td>' . $dia3 . '</td><td>' . $dia4 . '</td><td>' . $dia5 . '</td><td>' . $dia6 . '</td><td>' . $dia7 . '</td><td>' . $dia8 . '</td><td>' . $dia9 . '</td><td>' . $dia10 . '</td><td>' . $dia11 . '</td><td>' . $dia12 . '</td><td>' . $dia13 . '</td><td>' . $dia14 . '</td><td>' . $dia15 . '</td><td><input type="num" id="'.$name,$apat.'"></td><td><label>$' . $sueldo . '</label></td>';
 
                 echo '<input type="hidden" value="' . $sueldo . '" name="sueldo[]">'
                 . '<input type="hidden" value="' . $dia1 . '" name="dia1[]">'

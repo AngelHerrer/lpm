@@ -14,7 +14,7 @@ if ($weekService == 1) {
     $j = 0;
     for ($i = 0; $i < $count; $i++) {
         $contadori = (15 * $i);
-        $contadorj = (15 * ($i + 1)) - 1;
+        $contadorj = ((15 * ($i + 1)) - 1)-1;
         for ($j = $contadori; $j <= $contadorj; $j++) {
             if ($turno[$j] == 0) {
                 $turno[$j] = "null";
@@ -26,17 +26,17 @@ if ($weekService == 1) {
 } elseif ($weekService == 2) {
     $j = 0;
     for ($i = 0; $i <= $count; $i++) {
-        $contadori = (15 * $i);
-        $contadorj = (15 * ($i + 1)) - 1;
+        $contadori = (16 * $i);
+        $contadorj = (16 * ($i + 1)) - 1;
         for ($j = $contadori; $j <= $contadorj; $j++) {
-            echo $i;
-
             if ($turno[$j] == 0) {
                 $turno[$j] = "null";
             }
+            if($j < 32){
             $query = "insert into asistencias (id_emp,id_ser,id_turn,date_turn,comentarios) values ($idEmp[$i],$idService,$turno[$j],'$yearService-$mothService-$dias[$j]',null); ";
-            echo $query . ':::' . $idEmp[$i] . '--' . $turno[$j] . '---' . $dias[$j] . '<br>';
             $result = mysqli_query($liga, $query) or die('Fallo al insertar a la base ');
+            }
+            
         }
     }
 }
