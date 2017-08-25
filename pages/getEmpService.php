@@ -7,7 +7,7 @@ extract($_REQUEST);
 
 $days = cal_days_in_month(CAL_GREGORIAN, $mothService , $yearService);
 
-var_dump($days);
+//var_dump($days);
 
 
 ?>

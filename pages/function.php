@@ -295,11 +295,12 @@ class Valores {
         $datet = "$anno-$mes-15";
         $result = mysqli_query($liga, "call dynamic_view2('$dated','$datet',$id_serv)");
         if ($result === FALSE) {
-            die(mysql_error()); // TODO: better error handling
+            
+            echo mysqli_errno($liga) . ": " . mysqli_error($liga) . "\n";
+            die(mysqli_error()); // TODO: better error handling
         }
         if ($quiencena == 1) {
             while ($row = mysqli_fetch_array($result)) {
-                var_dump($row);
                 $name = $row['nomb_emp'];
                 $apat = $row['apat_emp'];
                 $amat = $row['amat_emp'];
