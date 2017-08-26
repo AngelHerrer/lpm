@@ -256,19 +256,21 @@ $quincena1 = $quincena;
 
 
         $.each(IDs, function (i, val) {
-            $("#" + IDs[i]).change(function () {
+            $("#" + IDs[i]).keyup(function () {
                 var cant = parseFloat($("#" + IDs[i]).val());
-
+                if (isNaN(cant)) {
+                    cant = 0;
+                }
+                console.log(cant);
                 if (cant.toString().indexOf('-') != -1) {
-                    console.log('resta');
-                    var total = cant - parseFloat(Sume[i]);
+                    var total = -parseFloat(Sume[i]) - cant;
+                    var total= -(total);
                 } else {
-                    console.log('suma');
                     var total = cant + parseFloat(Sume[i]);
                 }
                 
                 $("#" + SumeiD[i] + "la").text("$" + total);
-
+                $("#" + SumeiD[i]).val(total);
 
             });
         });
