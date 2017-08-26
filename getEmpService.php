@@ -13,7 +13,7 @@ $days = cal_days_in_month(CAL_GREGORIAN, $mothService , $yearService);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
     <head>
 

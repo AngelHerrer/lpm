@@ -9,7 +9,7 @@ $valores = new Valores();
 $valores->nomina($mes, $quincena, $id_ser);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
     <head>
 

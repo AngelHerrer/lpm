@@ -5,7 +5,7 @@ $valores = new Valores();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
     <head>
 

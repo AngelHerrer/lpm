@@ -7,7 +7,7 @@ extract($_REQUEST);
 $quincena1 = $quincena;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -270,7 +270,6 @@ $quincena1 = $quincena;
                 }
                 
                 $("#" + SumeiD[i] + "la").text("$" + total);
-                $("#" + SumeiD[i]).val(total);
 
             });
         });

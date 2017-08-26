@@ -52,7 +52,7 @@ $nomCom = $nomEmple.' '.$apPatEmple.' '.$apMatEmple;
       <div class="modal-content">
         <div class="modal-header">
             <a  class="close" href="index.php">×</a>
-            <h4 class="modal-title" >Editar al empleado:<p style="color: cadetblue;"> <?php echo $nomCom; ?></p></h4>
+            <h4 class="modal-title" >Editar al empleado:<span style="color:#002e6e;"> <?php echo $nomCom; ?></span></h4>
         </div>
           <?php echo $idEmple.'<br>'.$nomEmple.'<br>'.$apPatEmple.'<br>'.$apMatEmple.'<br>'.$rfcEmple.'<br>'.$dateNacEmple,
         $placeBirEmple.'<br>'.$avEmple.'<br>'.$colonyEmple.'<br>'.$cpEmple.'<br>'.$delEmple.'<br>'.$stateEmple.'<br>'.$phoneEmple.'<br>'.$phoneTwoEmple.'<br>'.
