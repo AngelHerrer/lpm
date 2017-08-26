@@ -235,17 +235,51 @@ $quincena1 = $quincena;
         });
     </script>
     <script>
-        
+
         var IDs = [];
-        var x =0;
-        $("#dataTablesexample").find("input[type=num]").each(function(){ IDs.push(this.id); });
-        for(var i in IDs){
-             $("#"+IDs[i]).keyup(function () {
-             console.log($("#"+IDs[i]).val());     
+        var Sue = [];
+        var Sume = [];
+        var SumeiD = [];
+        $("#dataTablesexample").find("input[type=num]").each(function () {
+            IDs.push(this.id);
+
+
         });
-        }
-       
-       
+
+        $("#dataTablesexample").find(".sumsueldo").each(function () {
+            Sume.push(this.value);
+        });
+
+        $("#dataTablesexample").find(".sumsueldo").each(function () {
+            SumeiD.push(this.id);
+        });
+
+
+        $.each(IDs, function (i, val) {
+            $("#" + IDs[i]).change(function () {
+                var cant = parseFloat($("#" + IDs[i]).val());
+
+                if (cant.toString().indexOf('-') != -1) {
+                    console.log('resta');
+                    var total = cant - parseFloat(Sume[i]);
+                } else {
+                    console.log('suma');
+                    var total = cant + parseFloat(Sume[i]);
+                }
+                
+                $("#" + SumeiD[i] + "la").text("$" + total);
+
+
+            });
+        });
+
+
+
+
+
+
+
+
     </script>
 </body>
 
