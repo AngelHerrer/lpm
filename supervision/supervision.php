@@ -6,23 +6,14 @@ $supervisores = new Supervisores();
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <script type="text/javascript">
-            var bloc = document.getElementById("bloque");
-            navigator.geolocation.getCurrentPosition(showPosition);
-            function showPosition(position) {
-                bloc.innerHTML = "Latitud: " + position.coords.latitude +
-                        "<br>Longitud: " + position.coords.longitude;
-            }
-        </script>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Supervision</title>
-        <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="../dist/css/base.css" rel="stylesheet" type="text/css"/>
         <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
         <link href="../dist/css/timeline.css" rel="stylesheet">
@@ -33,15 +24,6 @@ $supervisores = new Supervisores();
     </head>
     <body>
         <div class="container">
-            <?php
-            if (!empty($_SERVER['HTTP_CLIENT_IP'])) { //Verificar la ip compartida de internet
-              echo  $ip = $_SERVER['HTTP_CLIENT_IP'];
-            } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) { //verificar si la ip fue provista por un proxy
-              echo  $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-            } else {
-              echo  $ip = $_SERVER['REMOTE_ADDR'];
-            }
-            ?>
             <div class="row">
                 <?php
                 if ($_GET['succes'] == "true") {
