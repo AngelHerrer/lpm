@@ -71,14 +71,27 @@ class Supervisores {
 
             echo '<tr>';
 
-            echo '<td>' . $row['id_ser'] . '</td>';
-            echo '<td>' . $row['nomb_ser'] . '</td>';
+            echo '<td><a href="resumen_visitas.php?id_ser='.$row['id_ser'].'">' . $row['id_ser'] . '</a></td>';
+            echo '<td><a href="resumen_visitas.php?id_ser='.$row['id_ser'].'">' . $row['nomb_ser'] . '</a></td>';
 
 //            consulta_visitas_servicio($row['id_ser'], $year);
             $this->consulta_visitas_servicio($row['id_ser'], $year);
 
 
             echo '</tr>';
+        }
+    }
+    function resumen_visitas($id_ser){
+        include './conexion.php';
+        $query="select id_vis,nomb_sup,nomb_ser,fecha_vis,tipo_vis,come_vis from visitas_view where id_ser=$id_ser;";
+        $result = mysqli_query($liga, $query);
+        while ($row = mysqli_fetch_array($result)) {
+            echo '<tr>';
+            echo '<td>'.$row[0].'</td><td>'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td>'.$row[5].'</td>';
+            echo '</tr>';
+//            echo '<pre>';
+//            var_dump($row);
+//            echo '</pre>';
         }
     }
 
