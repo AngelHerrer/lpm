@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+    <body>
+        <script type="text/javascript">
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(mostrarPosicion, mostrarErrores, opciones);
+            } else {
+                alert("Tu navegador no soporta la geolocalización, actualiza tu navegador.");
+            }
+
+            function mostrarPosicion(posicion) {
+                var latitud = posicion.coords.latitude;
+                var longitud = posicion.coords.longitude;
+                var precision = posicion.coords.accuracy;
+                var fecha = new Date(posicion.timestamp);
+                
+                $('#latitud').val(latitud);
+                $('#longitud').val(longitud);
+                $('#precision').val(precision);
+            }
+
+            function mostrarErrores(error) {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert('Permiso denegado por el usuario');
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        alert('Posición no disponible');
+                        break;
+                    case error.TIMEOUT:
+                        alert('Tiempo de espera agotado');
+                        break;
+                    default:
+                        alert('Error de Geolocalización desconocido :' + error.code);
+                }
+            }
+
+            var opciones = {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 1000
+            };
+        </script>
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+        <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+        <script src="../bower_components/datatables-responsive/js/dataTables.responsive.js"></script>
+        <script src="../dist/js/sb-admin-2.js"></script>
+        <div id="posicion"></div>
+        <input type="text" name="latitud" id="latitud">
+        <input type="text" name="longitud"  id="longitud">
+        <input type="text" name="precision"  id="precision">
+    </body>
+</html>

@@ -23,8 +23,9 @@ $supervisores = new Supervisores();
 
     </head>
     <body>
+<!--        <iframe src="supervision.html"></iframe>-->
         <div class="container">
-               <script type="text/javascript">
+<!--               <script type="text/javascript">
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(mostrarPosicion, mostrarErrores, opciones);	
 		} else {
@@ -63,7 +64,7 @@ $supervisores = new Supervisores();
 			timeout: 10000,
 			maximumAge: 1000
 		};
-	</script>
+	</script>-->
         <div id="posicion"></div>
             <div class="row">
                 <?php
